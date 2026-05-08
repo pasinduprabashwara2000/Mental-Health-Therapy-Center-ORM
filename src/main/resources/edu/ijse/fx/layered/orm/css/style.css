@@ -1,0 +1,230 @@
+.root {
+    -fx-background-color: #f4f7fc;
+    -fx-font-family: "Poppins", "Segoe UI", sans-serif;
+}
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+
+.sidebar {
+    -fx-background-color: linear-gradient(to bottom, #1e3c72, #2a5298);
+}
+
+/* ============================================================
+   CONTENT AREA
+   ============================================================ */
+
+.content-pane {
+    -fx-background-color: #f4f7fc;
+    -fx-padding: 24px;
+}
+
+/* ============================================================
+   FORM ELEMENTS (Therapist Page)
+   ============================================================ */
+
+.label {
+    -fx-text-fill: #1e293b;
+}
+
+.text-field {
+    -fx-background-color: white;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 8px 12px;
+    -fx-font-size: 15px;
+}
+
+.text-field:focused {
+    -fx-border-color: #2a5298;
+    -fx-effect: dropshadow(gaussian, rgba(42,82,152,0.15), 6, 0, 0, 0);
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+/* ── Primary action button ─────────────────── */
+.button-primary {
+    -fx-background-color: #2a5298;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #2a5298;
+    -fx-border-width: 1;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 8px 18px;
+}
+
+.button-primary:hover {
+    -fx-background-color: #1e3c72;
+    -fx-border-color: #1e3c72;
+}
+
+.button-primary:pressed {
+    -fx-background-color: #14304d;
+    -fx-scale-x: 0.97;
+    -fx-scale-y: 0.97;
+}
+
+/* ── Secondary / outlined button ─────────────────────────── */
+.button-secondary {
+    -fx-background-color: white;
+    -fx-text-fill: #2a5298;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #2a5298;
+    -fx-border-width: 1.5;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 8px 18px;
+}
+
+.button-secondary:hover {
+    -fx-background-color: #e8f0fb;
+}
+
+.button-secondary:pressed {
+    -fx-background-color: #d0e2f4;
+    -fx-scale-x: 0.97;
+    -fx-scale-y: 0.97;
+}
+
+.button-save {
+    -fx-background-color: #16a34a;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.button-save:hover {
+    -fx-background-color: #15803d;
+}
+
+.button-update {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.button-update:hover {
+    -fx-background-color: #1d4ed8;
+}
+
+.button-delete {
+    -fx-background-color: #dc2626;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.button-delete:hover {
+    -fx-background-color: #b91c1c;
+}
+
+.button-reset {
+    -fx-background-color: #f59e0b;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.button-reset:hover {
+    -fx-background-color: #d97706;
+    -fx-text-fill: white;
+}
+
+/* ============================================================
+   TABLE VIEW
+   ============================================================ */
+
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #dde6f0;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: linear-gradient(to right, #1e3c72, #2a5298);
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell {
+    -fx-background-color: white;
+    -fx-border-color: transparent transparent #eef2f7 transparent;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #f8fbff;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #dbeafe;
+}
+
+.therapist-table {
+    -fx-background-color: #f8fafc;
+    -fx-border-color: #94a3b8;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-table-cell-border-color: #e2e8f0;
+}
+
+.therapist-table .column-header-background {
+    -fx-background-color: #e2e8f0;
+    -fx-background-radius: 6 6 0 0;
+}
+
+.therapist-table .column-header {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent #cbd5e1 #cbd5e1 transparent;
+}
+
+.therapist-table .column-header .label {
+    -fx-text-fill: #0f172a;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.therapist-table .table-row-cell {
+    -fx-background-color: white;
+    -fx-border-color: transparent transparent #e2e8f0 transparent;
+}
+
+.therapist-table .table-row-cell:odd {
+    -fx-background-color: #f8fafc;
+}
+
+.therapist-table .table-row-cell:hover {
+    -fx-background-color: #ecfeff;
+}
+
+.therapist-table .table-row-cell:selected {
+    -fx-background-color: #bae6fd;
+    -fx-text-background-color: #0f172a;
+}
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+
+.scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #cbd5e1;
+    -fx-background-radius: 10;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #94a3b8;
+}

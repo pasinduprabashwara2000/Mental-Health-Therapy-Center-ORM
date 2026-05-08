@@ -1,0 +1,112 @@
+/* ── Root / Scene ─────────────────────────────────────────── */
+.root {
+    -fx-background-color: #f0f4f8;
+    -fx-font-family: "Liberation Sans", "Segoe UI", sans-serif;
+}
+
+/* ── Left panel (ImageView area background) ───────────────── */
+.anchor-pane {
+    -fx-background-color: #ffffff;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 16, 0, 0, 4);
+}
+
+/* ── Labels ───────────────────────────────────────────────── */
+.label {
+    -fx-text-fill: #3a4a5c;
+    -fx-font-size: 14px;
+}
+
+/* Login heading – target by fx:id="loginLabel" or style class */
+.login-title {
+    -fx-text-fill: #1a3a5c;
+    -fx-font-family: "Liberation Sans Bold", "Segoe UI Bold", sans-serif;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+/* ── Text fields ──────────────────────────────────────────── */
+.text-field {
+    -fx-background-color: #f4f8fb;
+    -fx-border-color: #c8d6e0;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-padding: 6px 10px;
+    -fx-font-size: 14px;
+    -fx-text-fill: #1a3a5c;
+    -fx-prompt-text-fill: #9aaebb;
+}
+
+.text-field:focused {
+    -fx-border-color: #2d6a9f;
+    -fx-background-color: #ffffff;
+    -fx-effect: dropshadow(gaussian, rgba(45,106,159,0.18), 6, 0, 0, 0);
+}
+
+.text-field:hover {
+    -fx-border-color: #2d6a9f;
+}
+
+/* ── Buttons ──────────────────────────────────────────────── */
+.button {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-cursor: hand;
+    -fx-padding: 6px 12px;
+}
+
+/* Login button – primary */
+.button-primary {
+    -fx-background-color: #2d6a9f;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #2d6a9f;
+    -fx-border-width: 1.5px;
+}
+
+.button-primary:hover {
+    -fx-background-color: #1a3a5c;
+    -fx-border-color: #1a3a5c;
+}
+
+.button-primary:pressed {
+    -fx-background-color: #14304d;
+    -fx-scale-x: 0.97;
+    -fx-scale-y: 0.97;
+}
+
+/* Clear button – outlined secondary */
+.button-secondary {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #2d6a9f;
+    -fx-border-color: #2d6a9f;
+    -fx-border-width: 1.5px;
+}
+
+.button-secondary:hover {
+    -fx-background-color: #e8f0f8;
+}
+
+.button-secondary:pressed {
+    -fx-background-color: #d0e2f4;
+    -fx-scale-x: 0.97;
+    -fx-scale-y: 0.97;
+}
+
+/* ── Hyperlink ────────────────────────────────────────────── */
+.hyperlink {
+    -fx-text-fill: #8a9baa;
+    -fx-font-size: 11px;
+    -fx-border-color: transparent;
+    -fx-underline: false;
+}
+
+.hyperlink:hover {
+    -fx-text-fill: #2d6a9f;
+    -fx-underline: true;
+}
+
+.hyperlink:visited {
+    -fx-text-fill: #8a9baa;
+}

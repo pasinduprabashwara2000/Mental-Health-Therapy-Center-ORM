@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ijse.fx.layered.orm.controller.MainMenuController">
+   <children>
+      <AnchorPane prefHeight="768.0" prefWidth="291.0" styleClass="sidebar">
+         <children>
+            <Label alignment="CENTER" layoutY="27.0" prefHeight="29.0" prefWidth="291.0" style="-fx-text-fill: white;" text="Main Menu" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="therapitsBtn" layoutX="19.0" layoutY="80.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="253.0" styleClass="button-primary" stylesheets="@css/style.css" text="Manage Therapists">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="programsBtn" layoutX="19.0" layoutY="138.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="253.0" styleClass="button-primary" text="Manage Programs">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="patientsBtn" layoutX="19.0" layoutY="196.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="253.0" styleClass="button-primary" text="Manage Patients">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="logoutBtn" layoutX="19.0" layoutY="708.0" mnemonicParsing="false" onAction="#navigateLogout" prefHeight="36.0" prefWidth="253.0" styleClass="button-secondary" text="Log Out">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="contentPane" layoutX="291.0" layoutY="37.0" prefHeight="728.0" prefWidth="1075.0" styleClass="content-pane" stylesheets="@css/style.css" />
+      <Label layoutX="291.0" layoutY="-1.0" prefHeight="38.0" prefWidth="1075.0" styleClass="sidebar" />
+      <Label alignment="CENTER" layoutX="393.0" layoutY="6.0" prefHeight="18.0" prefWidth="860.0" style="-fx-text-fill: white; -fx-font-weight: bold;" text="Mental Health Therapy Center" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
