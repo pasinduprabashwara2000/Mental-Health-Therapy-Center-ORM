@@ -1,23 +1,23 @@
 package edu.ijse.fx.layered.orm.dao.custom.impl;
 
 import edu.ijse.fx.layered.orm.config.FactoryConfiguration;
-import edu.ijse.fx.layered.orm.dao.custom.TherapistDAO;
-import edu.ijse.fx.layered.orm.entity.TherapistEntity;
+import edu.ijse.fx.layered.orm.dao.custom.ProgramDAO;
+import edu.ijse.fx.layered.orm.entity.ProgramEntity;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import java.util.ArrayList;
 
-public class TherapistDAOImpl implements TherapistDAO {
+public class ProgramDAOImpl implements ProgramDAO {
 
     FactoryConfiguration factoryConfiguration = FactoryConfiguration.getInstance();
 
     @Override
-    public boolean save(TherapistEntity therapistEntity) throws Exception {
+    public boolean save(ProgramEntity programEntity) throws Exception {
 
         Session session = factoryConfiguration.getSession();
         Transaction transaction = session.beginTransaction();
         try {
-            session.persist(therapistEntity);
+            session.persist(programEntity);
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -31,16 +31,16 @@ public class TherapistDAOImpl implements TherapistDAO {
     }
 
     @Override
-    public boolean update(TherapistEntity therapistEntity) throws Exception {
+    public boolean update(ProgramEntity programEntity) throws Exception {
 
-        Session session = factoryConfiguration.getSession();
+        Session session= factoryConfiguration.getSession();
         Transaction transaction = session.beginTransaction();
         try {
-            TherapistEntity oldTherapist = session.find(TherapistEntity.class, therapistEntity.getId());
-            oldTherapist.setTherapistName(therapistEntity.getTherapistName());
-            oldTherapist.setProgramName(therapistEntity.getProgramName());
-            oldTherapist.setSpecialization(therapistEntity.getSpecialization());
-            oldTherapist.setContactNo(therapistEntity.getContactNo());
+            ProgramEntity oldProgramEntity = session.find(ProgramEntity.class, programEntity.getId());
+            oldProgramEntity.setName(programEntity.getName());
+            oldProgramEntity.setDuration(programEntity.getDuration());
+            oldProgramEntity.setCost(programEntity.getCost());
+            oldProgramEntity.setDescription(programEntity.getDescription());
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -57,10 +57,9 @@ public class TherapistDAOImpl implements TherapistDAO {
 
         Session session = factoryConfiguration.getSession();
         Transaction transaction = session.beginTransaction();
-
         try {
-            TherapistEntity therapistEntity = session.find(TherapistEntity.class, id);
-            session.remove(therapistEntity);
+            ProgramEntity programEntity = session.find(ProgramEntity.class, id);
+            session.remove(programEntity);
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -73,16 +72,16 @@ public class TherapistDAOImpl implements TherapistDAO {
     }
 
     @Override
-    public TherapistEntity search(Integer id) throws Exception {
+    public ProgramEntity search(Integer id) throws Exception {
 
         Session session = factoryConfiguration.getSession();
         Transaction transaction = session.beginTransaction();
-
         try {
-            TherapistEntity therapistEntity = session.find(TherapistEntity.class, id);
+            ProgramEntity programEntity = session.find(ProgramEntity.class, id);
             transaction.commit();
-            return therapistEntity;
+            return programEntity;
         } catch (Exception e) {
+            e.printStackTrace();
             transaction.rollback();
             return null;
         } finally {
@@ -91,11 +90,11 @@ public class TherapistDAOImpl implements TherapistDAO {
     }
 
     @Override
-    public ArrayList<TherapistEntity> getAll() throws Exception {
+    public ArrayList<ProgramEntity> getAll() throws Exception {
         Session session = factoryConfiguration.getSession();
 
         try {
-            return new ArrayList<>(session.createQuery("from TherapistEntity", TherapistEntity.class).list());
+            return new ArrayList<>(session.createQuery("from ProgramEntity",ProgramEntity.class).list());
         } finally {
             session.close();
         }

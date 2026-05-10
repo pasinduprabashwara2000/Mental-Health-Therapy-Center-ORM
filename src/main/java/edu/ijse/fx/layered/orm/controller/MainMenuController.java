@@ -24,6 +24,9 @@ public class MainMenuController {
     private Button programsBtn;
 
     @FXML
+    private Button dashboardBtn;
+
+    @FXML
     private Button therapitsBtn;
 
     @FXML
@@ -31,6 +34,7 @@ public class MainMenuController {
 
     @FXML
     public void initialize() {
+        dashboardBtn.setOnAction(event -> loadUI("Dashboard"));
         therapitsBtn.setOnAction(event -> loadUI("ManageTherapist"));
         programsBtn.setOnAction(event -> loadUI("ManagePrograms"));
         patientsBtn.setOnAction(event -> loadUI("ManagePatients"));

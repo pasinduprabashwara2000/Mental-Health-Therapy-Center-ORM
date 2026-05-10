@@ -14,22 +14,27 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Button fx:id="therapitsBtn" layoutX="19.0" layoutY="80.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="253.0" styleClass="button-primary" stylesheets="@css/style.css" text="Manage Therapists">
+            <Button fx:id="therapitsBtn" layoutX="19.0" layoutY="134.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="253.0" styleClass="button-primary" stylesheets="@css/style.css" text="Manage Therapists">
                <font>
                   <Font size="12.0" />
                </font>
             </Button>
-            <Button fx:id="programsBtn" layoutX="19.0" layoutY="138.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="253.0" styleClass="button-primary" text="Manage Programs">
+            <Button fx:id="programsBtn" layoutX="19.0" layoutY="192.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="253.0" styleClass="button-primary" text="Manage Programs">
                <font>
                   <Font size="12.0" />
                </font>
             </Button>
-            <Button fx:id="patientsBtn" layoutX="19.0" layoutY="196.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="253.0" styleClass="button-primary" text="Manage Patients">
+            <Button fx:id="patientsBtn" layoutX="19.0" layoutY="250.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="253.0" styleClass="button-primary" text="Manage Patients">
                <font>
                   <Font size="12.0" />
                </font>
             </Button>
             <Button fx:id="logoutBtn" layoutX="19.0" layoutY="708.0" mnemonicParsing="false" onAction="#navigateLogout" prefHeight="36.0" prefWidth="253.0" styleClass="button-secondary" text="Log Out">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="dashboardBtn" layoutX="19.0" layoutY="79.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="253.0" styleClass="button-primary" stylesheets="@css/style.css" text="Dashboard">
                <font>
                   <Font size="12.0" />
                </font>
