@@ -40,7 +40,6 @@ public class ProgramDAOImpl implements ProgramDAO {
             oldProgramEntity.setName(programEntity.getName());
             oldProgramEntity.setDuration(programEntity.getDuration());
             oldProgramEntity.setCost(programEntity.getCost());
-            oldProgramEntity.setDescription(programEntity.getDescription());
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -53,7 +52,7 @@ public class ProgramDAOImpl implements ProgramDAO {
     }
 
     @Override
-    public boolean delete(Integer id) throws Exception {
+    public boolean delete(String id) throws Exception {
 
         Session session = factoryConfiguration.getSession();
         Transaction transaction = session.beginTransaction();
@@ -72,7 +71,7 @@ public class ProgramDAOImpl implements ProgramDAO {
     }
 
     @Override
-    public ProgramEntity search(Integer id) throws Exception {
+    public ProgramEntity search(String id) throws Exception {
 
         Session session = factoryConfiguration.getSession();
         Transaction transaction = session.beginTransaction();

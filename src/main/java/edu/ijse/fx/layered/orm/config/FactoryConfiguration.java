@@ -1,6 +1,8 @@
 package edu.ijse.fx.layered.orm.config;
 
+import edu.ijse.fx.layered.orm.entity.PatientEntity;
 import edu.ijse.fx.layered.orm.entity.ProgramEntity;
+import edu.ijse.fx.layered.orm.entity.SessionEntity;
 import edu.ijse.fx.layered.orm.entity.TherapistEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -17,6 +19,8 @@ public class FactoryConfiguration {
         configuration.configure("hibernate.cfg.xml");
         configuration.addAnnotatedClass(TherapistEntity.class);
         configuration.addAnnotatedClasses(ProgramEntity.class);
+        configuration.addAnnotatedClasses(SessionEntity.class);
+        configuration.addAnnotatedClasses(PatientEntity.class);
 
         sessionFactory = configuration.buildSessionFactory();
 

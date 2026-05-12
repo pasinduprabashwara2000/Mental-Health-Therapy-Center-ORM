@@ -19,5 +19,7 @@
         <!-- Entities -->
         <mapping class="edu.ijse.fx.layered.orm.entity.TherapistEntity"/>
         <mapping class="edu.ijse.fx.layered.orm.entity.ProgramEntity"/>
+        <mapping class="edu.ijse.fx.layered.orm.entity.SessionEntity"/>
+        <mapping class="edu.ijse.fx.layered.orm.entity.PatientEntity"/>
     </session-factory>
 </hibernate-configuration>

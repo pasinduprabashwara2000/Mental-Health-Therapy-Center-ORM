@@ -8,8 +8,8 @@ public interface ProgramBO extends SuperBO {
 
     boolean save(ProgramDTO programDTO) throws Exception;
     boolean update(ProgramDTO programDTO) throws Exception;
-    boolean delete(Integer id) throws Exception;
-    ProgramDTO search(Integer id) throws Exception;
+    boolean delete(String id) throws Exception;
+    ProgramDTO search(String id) throws Exception;
     ArrayList<ProgramDTO> getAll() throws Exception;
 
 }

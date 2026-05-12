@@ -9,31 +9,32 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.net.URL;
 
-public class MainMenuController {
+public class MainMenu2Controller {
 
     @FXML
     private AnchorPane contentPane;
 
     @FXML
-    private Button programsBtn;
-
-    @FXML
-    private Button dashboardBtn;
-
-    @FXML
-    private Button therapitsBtn;
-
-    @FXML
     private Button logoutBtn;
 
     @FXML
+    private Button patientsBtn;
+
+    @FXML
+    private Button paymentsBtn;
+
+    @FXML
+    private Button sessionsBtn;
+
+    @FXML
     public void initialize() {
-        dashboardBtn.setOnAction(event -> loadUI("Dashboard"));
-        therapitsBtn.setOnAction(event -> loadUI("ManageTherapist"));
-        programsBtn.setOnAction(event -> loadUI("ManagePrograms"));
+        patientsBtn.setOnAction(event -> loadUI("ManagePatients"));
+        sessionsBtn.setOnAction(event -> loadUI("ManageSessions"));
+        paymentsBtn.setOnAction(event -> loadUI("ManagePayments"));
     }
 
     private void loadUI(String fxmlName) {

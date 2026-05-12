@@ -24,12 +24,7 @@
                   <Font size="12.0" />
                </font>
             </Button>
-            <Button fx:id="patientsBtn" layoutX="19.0" layoutY="250.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="253.0" styleClass="button-primary" text="Manage Patients">
-               <font>
-                  <Font size="12.0" />
-               </font>
-            </Button>
-            <Button fx:id="logoutBtn" layoutX="19.0" layoutY="708.0" mnemonicParsing="false" onAction="#navigateLogout" prefHeight="36.0" prefWidth="253.0" styleClass="button-secondary" text="Log Out">
+            <Button fx:id="logoutBtn" layoutX="20.0" layoutY="283.0" mnemonicParsing="false" onAction="#navigateLogout" prefHeight="36.0" prefWidth="253.0" styleClass="button-secondary" text="Log Out">
                <font>
                   <Font size="12.0" />
                </font>

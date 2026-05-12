@@ -8,8 +8,8 @@ public interface TherapistBO extends SuperBO {
 
     boolean save(TherapistDTO therapistDTO) throws Exception;
     boolean update(TherapistDTO therapistDTO) throws Exception;
-    boolean delete(Integer id) throws Exception;
-    TherapistDTO search(Integer id) throws Exception;
+    boolean delete(String id) throws Exception;
+    TherapistDTO search(String id) throws Exception;
     ArrayList<TherapistDTO> getAll() throws Exception;
 
 }

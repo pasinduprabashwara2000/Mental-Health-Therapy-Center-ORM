@@ -13,8 +13,7 @@ import lombok.NoArgsConstructor;
 public class ProgramEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private String id;
 
     @Column(nullable = false , length = 255)
     private String name;
@@ -24,8 +23,5 @@ public class ProgramEntity {
 
     @Column(nullable = false, length = 25)
     private double cost;
-
-    @Column(nullable = false, length = 255)
-    private String description;
 
 }

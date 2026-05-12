@@ -18,8 +18,7 @@ public class ProgramBOImpl implements ProgramBO {
               programDTO.getId(),
               programDTO.getName(),
               programDTO.getDuration(),
-              programDTO.getCost(),
-              programDTO.getDescription()
+              programDTO.getCost()
         );
 
         return programDAO.save(programEntity);
@@ -33,8 +32,7 @@ public class ProgramBOImpl implements ProgramBO {
                 programDTO.getId(),
                 programDTO.getName(),
                 programDTO.getDuration(),
-                programDTO.getCost(),
-                programDTO.getDescription()
+                programDTO.getCost()
         );
 
         return programDAO.update(programEntity);
@@ -42,12 +40,12 @@ public class ProgramBOImpl implements ProgramBO {
     }
 
     @Override
-    public boolean delete(Integer id) throws Exception {
+    public boolean delete(String id) throws Exception {
         return programDAO.delete(id);
     }
 
     @Override
-    public ProgramDTO search(Integer id) throws Exception {
+    public ProgramDTO search(String id) throws Exception {
 
         ProgramEntity programEntity = programDAO.search(id);
 
@@ -56,8 +54,7 @@ public class ProgramBOImpl implements ProgramBO {
               programEntity.getId(),
               programEntity.getName(),
               programEntity.getDuration(),
-              programEntity.getCost(),
-              programEntity.getDescription()
+              programEntity.getCost()
             );
         }
 
@@ -76,8 +73,7 @@ public class ProgramBOImpl implements ProgramBO {
                programEntity.getId(),
                programEntity.getName(),
                programEntity.getDuration(),
-               programEntity.getCost(),
-               programEntity.getDescription()
+               programEntity.getCost()
             ));
         }
 

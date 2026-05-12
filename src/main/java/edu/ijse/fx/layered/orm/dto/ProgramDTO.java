@@ -9,10 +9,9 @@ import lombok.NoArgsConstructor;
 @Data
 public class ProgramDTO {
 
-    private int id;
+    private String id;
     private String name;
     private String duration;
     private double cost;
-    private String description;
 
 }

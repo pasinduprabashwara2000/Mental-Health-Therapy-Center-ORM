@@ -9,7 +9,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-
 import java.util.ArrayList;
 
 public class TherapistController {
@@ -21,10 +20,10 @@ public class TherapistController {
     private TableColumn<TherapistDTO, Integer> colContact;
 
     @FXML
-    private TableColumn<TherapistDTO, Integer> colId;
+    private TableColumn<TherapistDTO, String> colId;
 
     @FXML
-    private TableColumn<TherapistDTO, String> colProgramName;
+    private TableColumn<TherapistDTO, String> colProgramId;
 
     @FXML
     private TableColumn<TherapistDTO, String> colSpecs;
@@ -64,14 +63,14 @@ public class TherapistController {
 
     @FXML
     void initialize() {
-            colId.setCellValueFactory(new PropertyValueFactory<>("id"));
+            colId.setCellValueFactory(new PropertyValueFactory<>("therapistId"));
             colTherapistName.setCellValueFactory(new PropertyValueFactory<>("therapistName"));
-            colProgramName.setCellValueFactory(new PropertyValueFactory<>("programName"));
+            colProgramId.setCellValueFactory(new PropertyValueFactory<>("programId"));
             colSpecs.setCellValueFactory(new PropertyValueFactory<>("specialization"));
             colContact.setCellValueFactory(new PropertyValueFactory<>("contactNo"));
 
             loadTable();
-            loadCustomers();
+            loadPrograms();
 
             therapistTable.setOnMouseClicked(mouseEvent -> {
                 if (mouseEvent.getClickCount() == 1){
@@ -90,7 +89,7 @@ public class TherapistController {
         }
     }
 
-    void loadCustomers(){
+    void loadPrograms(){
         try {
             ArrayList <ProgramDTO> programDTOS = programBO.getAll();
 
@@ -98,7 +97,7 @@ public class TherapistController {
             programSelect.setValue("Select Program");
             if (programDTOS != null){
                 for (ProgramDTO programDTO : programDTOS){
-                    programSelect.getItems().addAll(programDTO.getName());
+                    programSelect.getItems().addAll(String.valueOf(programDTO.getId()));
                 }
             }
 
@@ -110,9 +109,9 @@ public class TherapistController {
     void selectTherapist(){
         TherapistDTO therapistDTO = therapistTable.getSelectionModel().getSelectedItem();
         if (therapistDTO != null){
-            idTxt.setText(String.valueOf(therapistDTO.getId()));
+            idTxt.setText(therapistDTO.getTherapistId());
             therapistTxt.setText(therapistDTO.getTherapistName());
-            programSelect.setValue(therapistDTO.getProgramName());
+            programSelect.setValue(String.valueOf(therapistDTO.getProgramId()));
             specsTxt.setText(therapistDTO.getSpecialization());
             contactTxt.setText(String.valueOf(therapistDTO.getContactNo()));
         }
@@ -121,7 +120,7 @@ public class TherapistController {
     @FXML
     void navigateDelete(ActionEvent event) {
         try {
-            boolean isDeleted = therapistBO.delete(Integer.parseInt(idTxt.getText()));
+            boolean isDeleted = therapistBO.delete(idTxt.getText());
 
             if (isDeleted) {
                 new Alert(Alert.AlertType.INFORMATION,"Therapist Deleted Successfully").show();
@@ -148,7 +147,7 @@ public class TherapistController {
     void navigateSave(ActionEvent event) {
         try {
             TherapistDTO therapistDTO = new TherapistDTO(
-                    0,
+                    idTxt.getText(),
                     therapistTxt.getText(),
                     programSelect.getValue(),
                     specsTxt.getText(),
@@ -173,7 +172,7 @@ public class TherapistController {
     void navigateUpdate(ActionEvent event) {
         try {
             TherapistDTO therapistDTO = new TherapistDTO(
-                    Integer.parseInt(idTxt.getText()),
+                    idTxt.getText(),
                     therapistTxt.getText(),
                     programSelect.getValue(),
                     specsTxt.getText(),

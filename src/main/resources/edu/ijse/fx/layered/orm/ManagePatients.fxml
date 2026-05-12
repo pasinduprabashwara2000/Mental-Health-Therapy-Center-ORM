@@ -9,79 +9,191 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1075.0" style="-fx-background-color: white;" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ijse.fx.layered.orm.controller.PatientsController">
+<AnchorPane prefHeight="700.0" prefWidth="1075.0"
+            style="-fx-background-color: white;"
+            stylesheets="@css/style.css"
+            xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="edu.ijse.fx.layered.orm.controller.PatientsController">
+
     <children>
-        <Label layoutX="25.0" layoutY="20.0" prefHeight="31.0" prefWidth="401.0" text="Manage Patients">
+
+        <!-- Title -->
+        <Label layoutX="25.0" layoutY="20.0"
+               text="Manage Patients">
             <font>
-                <Font name="System Bold" size="22.0" />
+                <Font name="System Bold" size="22.0"/>
             </font>
         </Label>
-        <Label layoutX="25.0" layoutY="69.0" prefHeight="41.0" prefWidth="278.0" text="Patient Name : ">
+
+        <!-- Patient Name -->
+        <Label layoutX="25.0" layoutY="69.0"
+               text="Patient Name :">
             <font>
-                <Font size="16.0" />
+                <Font size="16.0"/>
             </font>
         </Label>
-        <TextField fx:id="programTxt" layoutX="25.0" layoutY="116.0" prefHeight="41.0" prefWidth="304.0">
+
+        <TextField fx:id="patientNameTxt"
+                   layoutX="25.0" layoutY="116.0"
+                   prefHeight="41.0" prefWidth="304.0">
             <font>
-                <Font size="15.0" />
-            </font></TextField>
-        <Label layoutX="368.0" layoutY="69.0" prefHeight="41.0" prefWidth="278.0" text="Age  : ">
-            <font>
-                <Font size="16.0" />
-            </font>
-        </Label>
-        <TextField fx:id="durationTxt" layoutX="368.0" layoutY="115.0" prefHeight="41.0" prefWidth="304.0">
-            <font>
-                <Font size="15.0" />
-            </font></TextField>
-        <Label layoutX="710.0" layoutY="69.0" prefHeight="41.0" prefWidth="278.0" text="Gender :">
-            <font>
-                <Font size="16.0" />
-            </font>
-        </Label>
-        <Button fx:id="saveBtn" layoutX="25.0" layoutY="299.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="137.0" styleClass="button-save" stylesheets="@css/style.css" text="Save" />
-        <Button fx:id="updateBtn" layoutX="177.0" layoutY="299.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="137.0" styleClass="button-update" stylesheets="@css/style.css" text="Update" />
-        <Button fx:id="deleteBtn" layoutX="329.0" layoutY="299.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="137.0" styleClass="button-delete" stylesheets="@css/style.css" text="Delete" />
-        <Button fx:id="resetBtn" layoutX="483.0" layoutY="298.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="137.0" styleClass="button-reset" stylesheets="@css/style.css" text="Reset" />
-        <TableView fx:id="therapistTable" layoutX="25.0" layoutY="367.0" prefHeight="308.0" prefWidth="1027.0" styleClass="therapist-table">
-            <columns>
-                <TableColumn prefWidth="149.0" text="Program ID" />
-                <TableColumn prefWidth="240.0" text="Program Name" />
-                <TableColumn prefWidth="183.0" text="Duration" />
-                <TableColumn prefWidth="141.0" text="Cost" />
-                <TableColumn prefWidth="612.0" text="Description" />
-            </columns>
-        </TableView>
-        <Label layoutX="25.0" layoutY="177.0" prefHeight="41.0" prefWidth="278.0" text="Contact Number  : ">
-            <font>
-                <Font size="16.0" />
-            </font>
-        </Label>
-        <TextField fx:id="descriptionsTxt" layoutX="25.0" layoutY="228.0" prefHeight="41.0" prefWidth="304.0">
-            <font>
-                <Font size="15.0" />
+                <Font size="15.0"/>
             </font>
         </TextField>
-      <Label layoutX="368.0" layoutY="177.0" prefHeight="41.0" prefWidth="278.0" text="Address  : ">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <TextField fx:id="descriptionsTxt1" layoutX="368.0" layoutY="228.0" prefHeight="41.0" prefWidth="304.0">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </TextField>
-      <Label layoutX="710.0" layoutY="177.0" prefHeight="41.0" prefWidth="278.0" text="Disease  : ">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <TextField fx:id="descriptionsTxt11" layoutX="710.0" layoutY="228.0" prefHeight="41.0" prefWidth="304.0">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </TextField>
-      <ChoiceBox layoutX="710.0" layoutY="115.0" prefHeight="18.0" prefWidth="304.0" styleClass="text-field" stylesheets="@css/style.css" />
+
+        <!-- Age -->
+        <Label layoutX="368.0" layoutY="69.0"
+               text="Age :">
+            <font>
+                <Font size="16.0"/>
+            </font>
+        </Label>
+
+        <TextField fx:id="ageTxt"
+                   layoutX="368.0" layoutY="115.0"
+                   prefHeight="41.0" prefWidth="304.0">
+            <font>
+                <Font size="15.0"/>
+            </font>
+        </TextField>
+
+        <!-- Gender -->
+        <Label layoutX="710.0" layoutY="69.0"
+               text="Gender :">
+            <font>
+                <Font size="16.0"/>
+            </font>
+        </Label>
+
+        <ChoiceBox fx:id="genderChoiceBox"
+                   layoutX="710.0"
+                   layoutY="115.0"
+                   prefHeight="41.0"
+                   prefWidth="304.0"
+                   styleClass="text-field"
+                   stylesheets="@css/style.css"/>
+
+        <!-- Contact Number -->
+        <Label layoutX="25.0" layoutY="177.0"
+               text="Contact Number :">
+            <font>
+                <Font size="16.0"/>
+            </font>
+        </Label>
+
+        <TextField fx:id="contactTxt"
+                   layoutX="25.0" layoutY="228.0"
+                   prefHeight="41.0" prefWidth="304.0">
+            <font>
+                <Font size="15.0"/>
+            </font>
+        </TextField>
+
+        <!-- Address -->
+        <Label layoutX="368.0" layoutY="177.0"
+               text="Address :">
+            <font>
+                <Font size="16.0"/>
+            </font>
+        </Label>
+
+        <TextField fx:id="addressTxt"
+                   layoutX="368.0" layoutY="228.0"
+                   prefHeight="41.0" prefWidth="304.0">
+            <font>
+                <Font size="15.0"/>
+            </font>
+        </TextField>
+
+        <!-- Disease -->
+        <Label layoutX="710.0" layoutY="177.0"
+               text="Disease :">
+            <font>
+                <Font size="16.0"/>
+            </font>
+        </Label>
+
+        <TextField fx:id="diseaseTxt"
+                   layoutX="710.0" layoutY="228.0"
+                   prefHeight="41.0"
+                   prefWidth="304.0">
+            <font>
+                <Font size="15.0"/>
+            </font>
+        </TextField>
+
+        <!-- Buttons -->
+        <Button fx:id="saveBtn"
+                layoutX="25.0" layoutY="299.0"
+                prefHeight="41.0" prefWidth="137.0"
+                styleClass="button-save"
+                stylesheets="@css/style.css"
+                text="Save"/>
+
+        <Button fx:id="updateBtn"
+                layoutX="177.0" layoutY="299.0"
+                prefHeight="41.0" prefWidth="137.0"
+                styleClass="button-update"
+                stylesheets="@css/style.css"
+                text="Update"/>
+
+        <Button fx:id="deleteBtn"
+                layoutX="329.0" layoutY="299.0"
+                prefHeight="41.0" prefWidth="137.0"
+                styleClass="button-delete"
+                stylesheets="@css/style.css"
+                text="Delete"/>
+
+        <Button fx:id="resetBtn"
+                layoutX="483.0" layoutY="299.0"
+                prefHeight="41.0" prefWidth="137.0"
+                styleClass="button-reset"
+                stylesheets="@css/style.css"
+                text="Reset"/>
+
+        <!-- Table -->
+        <TableView fx:id="patientTable"
+                   layoutX="25.0"
+                   layoutY="367.0"
+                   prefHeight="308.0"
+                   prefWidth="1027.0"
+                   styleClass="therapist-table">
+
+            <columns>
+
+                <TableColumn fx:id="colId"
+                             prefWidth="120.0"
+                             text="Patient ID"/>
+
+                <TableColumn fx:id="colName"
+                             prefWidth="220.0"
+                             text="Patient Name"/>
+
+                <TableColumn fx:id="colAge"
+                             prefWidth="100.0"
+                             text="Age"/>
+
+                <TableColumn fx:id="colGender"
+                             prefWidth="120.0"
+                             text="Gender"/>
+
+                <TableColumn fx:id="colContact"
+                             prefWidth="160.0"
+                             text="Contact Number"/>
+
+                <TableColumn fx:id="colAddress"
+                             prefWidth="160.0"
+                             text="Address"/>
+
+                <TableColumn fx:id="colDisease"
+                             prefWidth="140.0"
+                             text="Disease"/>
+
+            </columns>
+
+        </TableView>
+
     </children>
+
 </AnchorPane>

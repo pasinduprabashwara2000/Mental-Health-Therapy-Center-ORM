@@ -2,22 +2,25 @@ package edu.ijse.fx.layered.orm.bo.custom.impl;
 
 import edu.ijse.fx.layered.orm.bo.custom.TherapistBO;
 import edu.ijse.fx.layered.orm.dao.DAOFactory;
+import edu.ijse.fx.layered.orm.dao.custom.ProgramDAO;
 import edu.ijse.fx.layered.orm.dao.custom.TherapistDAO;
 import edu.ijse.fx.layered.orm.dto.TherapistDTO;
+import edu.ijse.fx.layered.orm.entity.ProgramEntity;
 import edu.ijse.fx.layered.orm.entity.TherapistEntity;
 import java.util.ArrayList;
 
 public class TherapistBOImpl implements TherapistBO {
 
     private final TherapistDAO therapistDAO = (TherapistDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.THERAPIST);
+    private final ProgramDAO programDAO = (ProgramDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.PROGRAM);
 
     @Override
     public boolean save(TherapistDTO therapistDTO) throws Exception {
-
+        ProgramEntity programId = programDAO.search(therapistDTO.getProgramId());
         TherapistEntity therapistEntity = new TherapistEntity(
-                therapistDTO.getId(),
+                therapistDTO.getTherapistId(),
                 therapistDTO.getTherapistName(),
-                therapistDTO.getProgramName(),
+                programId,
                 therapistDTO.getSpecialization(),
                 therapistDTO.getContactNo()
         );
@@ -26,11 +29,11 @@ public class TherapistBOImpl implements TherapistBO {
 
     @Override
     public boolean update(TherapistDTO therapistDTO) throws Exception {
-
+        ProgramEntity programId = programDAO.search(therapistDTO.getProgramId());
         TherapistEntity therapistEntity =new TherapistEntity(
-                therapistDTO.getId(),
+                therapistDTO.getTherapistId(),
                 therapistDTO.getTherapistName(),
-                therapistDTO.getProgramName(),
+                programId,
                 therapistDTO.getSpecialization(),
                 therapistDTO.getContactNo()
         );
@@ -38,22 +41,22 @@ public class TherapistBOImpl implements TherapistBO {
     }
 
     @Override
-    public boolean delete(Integer id) throws Exception {
+    public boolean delete(String id) throws Exception {
         return therapistDAO.delete(id);
     }
 
     @Override
-    public TherapistDTO search(Integer id) throws Exception {
-
+    public TherapistDTO search(String id) throws Exception {
         TherapistEntity therapistEntity = therapistDAO.search(id);
-
         if(therapistEntity != null){
             return new TherapistDTO(
-              therapistEntity.getId(),
-              therapistEntity.getTherapistName(),
-              therapistEntity.getProgramName(),
-              therapistEntity.getSpecialization(),
-              therapistEntity.getContactNo()
+                    therapistEntity.getTherapistId(),
+                    therapistEntity.getTherapistName(),
+                    therapistEntity.getProgramId() != null
+                            ? therapistEntity.getProgramId().getId()
+                            : null,
+                    therapistEntity.getSpecialization(),
+                    therapistEntity.getContactNo()
             );
         }
         return null;
@@ -67,16 +70,15 @@ public class TherapistBOImpl implements TherapistBO {
 
         for (TherapistEntity therapistEntity : therapistEntities){
             therapistDTOS.add(new TherapistDTO(
-               therapistEntity.getId(),
-               therapistEntity.getTherapistName(),
-               therapistEntity.getProgramName(),
-               therapistEntity.getSpecialization(),
-               therapistEntity.getContactNo()
+                    therapistEntity.getTherapistId(),
+                    therapistEntity.getTherapistName(),
+                    therapistEntity.getProgramId() != null ? therapistEntity.getProgramId().getId() : null,
+                    therapistEntity.getSpecialization(),
+                    therapistEntity.getContactNo()
             ));
         }
 
         return therapistDTOS;
 
     }
-
 }

@@ -16,9 +16,6 @@ public class ProgramsController {
     private TableColumn<ProgramDTO, Double> colCost;
 
     @FXML
-    private TableColumn<ProgramDTO, String> colDescription;
-
-    @FXML
     private TableColumn<ProgramDTO, String> colDuration;
 
     @FXML
@@ -32,9 +29,6 @@ public class ProgramsController {
 
     @FXML
     private Button deleteBtn;
-
-    @FXML
-    private TextField descriptionTxt;
 
     @FXML
     private TextField durationTxt;
@@ -63,7 +57,6 @@ public class ProgramsController {
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colDuration.setCellValueFactory(new PropertyValueFactory<>("duration"));
         colCost.setCellValueFactory(new PropertyValueFactory<>("cost"));
-        colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
 
         loadTable();
 
@@ -93,7 +86,6 @@ public class ProgramsController {
             programTxt.setText(programDTO.getName());
             durationTxt.setText(programDTO.getDuration());
             costTxt.setText(String.valueOf(programDTO.getCost()));
-            descriptionTxt.setText(String.valueOf(programDTO.getDescription()));
         }
 
     }
@@ -101,7 +93,7 @@ public class ProgramsController {
     @FXML
     void navigateDelete(ActionEvent event) {
         try {
-            boolean deleted = programBO.delete(Integer.parseInt(idTxt.getText()));
+            boolean deleted = programBO.delete(idTxt.getText());
             if(deleted){
                 loadTable();
                 navigateReset(event);
@@ -120,18 +112,16 @@ public class ProgramsController {
         programTxt.setText("");
         durationTxt.setText("");
         costTxt.setText("");
-        descriptionTxt.setText("");
     }
 
     @FXML
     void navigateSave(ActionEvent event) {
         try {
             ProgramDTO programDTO = new ProgramDTO(
-                    0,
+                    idTxt.getText(),
                     programTxt.getText(),
                     durationTxt.getText(),
-                    Double.parseDouble(costTxt.getText()),
-                    descriptionTxt.getText()
+                    Double.parseDouble(costTxt.getText())
             );
             boolean isSaved = programBO.save(programDTO);
             if(isSaved){
@@ -150,11 +140,10 @@ public class ProgramsController {
     void navigateUpdate(ActionEvent event) {
         try {
             ProgramDTO programDTO = new ProgramDTO(
-                    Integer.parseInt(idTxt.getText()),
+                    idTxt.getText(),
                     programTxt.getText(),
                     durationTxt.getText(),
-                    Double.parseDouble(costTxt.getText()),
-                    descriptionTxt.getText()
+                    Double.parseDouble(costTxt.getText())
             );
             boolean isUpdated = programBO.update(programDTO);
             if(isUpdated){

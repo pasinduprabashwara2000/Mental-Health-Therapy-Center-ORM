@@ -13,19 +13,19 @@ import lombok.NoArgsConstructor;
 public class TherapistEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private String therapistId;
 
     @Column(nullable = false, length = 100)
     private String therapistName;
 
-    @Column(nullable = false, length = 100)
-    private String programName;
+    @OneToOne
+    @JoinColumn(name = "program_id")
+    private ProgramEntity programId;
 
     @Column(nullable = false, length = 255)
-    private String Specialization;
+    private String specialization;
 
     @Column(name = "contact_no", unique = true, length = 10)
-    private int ContactNo;
+    private int contactNo;
 
 }
