@@ -25,7 +25,7 @@ public class PatientEntity {
     @Column(nullable = false, length = 5)
     private String gender;
 
-    @Column(nullable = false, name = "contact_no", length = 10)
+    @Column(nullable = false, unique = true ,name = "contact_no", length = 10)
     private String contactNumber;
 
     @Column(nullable = false, length = 255)

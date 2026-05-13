@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.time.LocalDate;
-import java.time.LocalTime;
 
 @Entity
 @Table(name = "session")
@@ -15,7 +14,7 @@ import java.time.LocalTime;
 public class SessionEntity {
 
     @Id
-    private String sessionsId;
+    private String sessionId;
 
     @ManyToOne
     @JoinColumn(name = "therapist_id")
@@ -27,8 +26,5 @@ public class SessionEntity {
 
     @Column(nullable = false)
     private LocalDate date;
-
-    @Column(nullable = false)
-    private LocalTime time;
 
 }

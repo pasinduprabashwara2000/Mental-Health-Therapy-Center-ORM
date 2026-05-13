@@ -9,7 +9,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 
@@ -33,7 +32,7 @@ public class MainMenu2Controller {
     @FXML
     public void initialize() {
         patientsBtn.setOnAction(event -> loadUI("ManagePatients"));
-        sessionsBtn.setOnAction(event -> loadUI("ManageSessions"));
+        sessionsBtn.setOnAction(event -> loadUI("ManageSession"));
         paymentsBtn.setOnAction(event -> loadUI("ManagePayments"));
     }
 

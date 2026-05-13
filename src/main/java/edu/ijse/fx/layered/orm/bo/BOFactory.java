@@ -2,6 +2,7 @@ package edu.ijse.fx.layered.orm.bo;
 
 import edu.ijse.fx.layered.orm.bo.custom.impl.PatientBOImpl;
 import edu.ijse.fx.layered.orm.bo.custom.impl.ProgramBOImpl;
+import edu.ijse.fx.layered.orm.bo.custom.impl.SessionBOImpl;
 import edu.ijse.fx.layered.orm.bo.custom.impl.TherapistBOImpl;
 
 public class BOFactory {
@@ -20,7 +21,7 @@ public class BOFactory {
     }
 
     public enum BOTypes {
-        THERAPIST, PROGRAM, PATIENT
+        THERAPIST, PROGRAM, PATIENT, SESSION
     }
 
     public SuperBO getBO (BOTypes boTypes){
@@ -31,6 +32,8 @@ public class BOFactory {
                 return new ProgramBOImpl();
             case PATIENT:
                 return new PatientBOImpl();
+            case SESSION:
+                return new SessionBOImpl();
         }
 
         return null;

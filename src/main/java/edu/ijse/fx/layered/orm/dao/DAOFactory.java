@@ -1,6 +1,8 @@
 package edu.ijse.fx.layered.orm.dao;
 
+import edu.ijse.fx.layered.orm.dao.custom.impl.PatientDAOImpl;
 import edu.ijse.fx.layered.orm.dao.custom.impl.ProgramDAOImpl;
+import edu.ijse.fx.layered.orm.dao.custom.impl.SessionDAOImpl;
 import edu.ijse.fx.layered.orm.dao.custom.impl.TherapistDAOImpl;
 
 public class DAOFactory {
@@ -19,7 +21,7 @@ public class DAOFactory {
     }
 
     public enum DAOTypes{
-        THERAPIST, PROGRAM
+        THERAPIST, PROGRAM, PATIENT, SESSION
     }
 
     public SuperDAO getDAO (DAOTypes daoTypes){
@@ -28,6 +30,10 @@ public class DAOFactory {
                 return new TherapistDAOImpl();
             case PROGRAM :
                 return new ProgramDAOImpl();
+            case PATIENT :
+                return new PatientDAOImpl();
+            case SESSION :
+                return new SessionDAOImpl();
         }
         return null;
     }
