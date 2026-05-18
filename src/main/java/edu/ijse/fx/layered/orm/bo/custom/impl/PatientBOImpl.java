@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class PatientBOImpl implements PatientBO {
 
-    PatientDAO patientDAO = (PatientDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.PATIENT);
+    private final PatientDAO patientDAO = (PatientDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.PATIENT);
 
     @Override
     public boolean save(PatientDTO patientDTO) throws Exception {

@@ -1,23 +1,23 @@
 package edu.ijse.fx.layered.orm.dao.custom.impl;
 
 import edu.ijse.fx.layered.orm.config.FactoryConfiguration;
-import edu.ijse.fx.layered.orm.dao.custom.SessionDAO;
-import edu.ijse.fx.layered.orm.entity.SessionEntity;
+import edu.ijse.fx.layered.orm.dao.custom.PaymentDAO;
+import edu.ijse.fx.layered.orm.entity.PaymentEntity;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import java.util.ArrayList;
 
-public class SessionDAOImpl implements SessionDAO {
+public class PaymentDAOImpl implements PaymentDAO {
 
     FactoryConfiguration factoryConfiguration = FactoryConfiguration.getInstance();
 
     @Override
-    public boolean save(SessionEntity sessionEntity) throws Exception {
+    public boolean save(PaymentEntity paymentEntity) throws Exception {
 
         Session session = factoryConfiguration.getSession();
         Transaction transaction = session.beginTransaction();
         try {
-            session.persist(sessionEntity);
+            session.persist(paymentEntity);
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -27,18 +27,20 @@ public class SessionDAOImpl implements SessionDAO {
         } finally {
             session.close();
         }
+
     }
 
     @Override
-    public boolean update(SessionEntity sessionEntity) throws Exception {
-
+    public boolean update(PaymentEntity paymentEntity) throws Exception {
         Session session = factoryConfiguration.getSession();
         Transaction transaction = session.beginTransaction();
         try {
-            SessionEntity oldSession = session.find(SessionEntity.class, sessionEntity.getSessionId());
-            oldSession.getTherapistId();
-            oldSession.getPatientId();
-            oldSession.getDate();
+            PaymentEntity oldPayment = session.find(PaymentEntity.class,paymentEntity.getPaymentId());
+            oldPayment.setSessionId(paymentEntity.getSessionId());
+            oldPayment.setAmount(paymentEntity.getAmount());
+            oldPayment.setPaymentMethod(paymentEntity.getPaymentMethod());
+            oldPayment.setPaymentDate(paymentEntity.getPaymentDate());
+            oldPayment.setStatus(paymentEntity.getStatus());
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -52,12 +54,11 @@ public class SessionDAOImpl implements SessionDAO {
 
     @Override
     public boolean delete(String id) throws Exception {
-
         Session session = factoryConfiguration.getSession();
-        Transaction transaction = session.beginTransaction();
+        Transaction transaction= session.beginTransaction();
         try {
-            SessionEntity sessionEntity = session.find(SessionEntity.class, id);
-            session.remove(sessionEntity);
+            PaymentEntity paymentEntity = session.find(PaymentEntity.class, id);
+            session.remove(paymentEntity);
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -70,13 +71,14 @@ public class SessionDAOImpl implements SessionDAO {
     }
 
     @Override
-    public SessionEntity search(String id) throws Exception {
+    public PaymentEntity search(String id) throws Exception {
+
         Session session = factoryConfiguration.getSession();
         Transaction transaction = session.beginTransaction();
         try {
-            SessionEntity sessionEntity = session.find(SessionEntity.class,id);
+            PaymentEntity paymentEntity = session.find(PaymentEntity.class,id);
             transaction.commit();
-            return sessionEntity;
+            return paymentEntity;
         } catch (Exception e) {
             e.printStackTrace();
             transaction.rollback();
@@ -87,11 +89,11 @@ public class SessionDAOImpl implements SessionDAO {
     }
 
     @Override
-    public ArrayList<SessionEntity> getAll() throws Exception {
+    public ArrayList<PaymentEntity> getAll() throws Exception {
 
         Session session = factoryConfiguration.getSession();
         try {
-            return new ArrayList<>(session.createQuery("from SessionEntity", SessionEntity.class).list());
+            return new ArrayList<PaymentEntity>(session.createQuery("FROM PaymentEntity", PaymentEntity.class).list());
         } finally {
             session.close();
         }

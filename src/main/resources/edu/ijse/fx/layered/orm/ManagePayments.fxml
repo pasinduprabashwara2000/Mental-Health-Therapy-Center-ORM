@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1075.0" style="-fx-background-color: white;" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ijse.fx.layered.orm.controller.PaymentController">
+
+    <children>
+
+        <!-- Title -->
+        <Label layoutX="25.0" layoutY="20.0" text="Manage Payment">
+            <font>
+                <Font name="System Bold" size="22.0" />
+            </font>
+        </Label>
+
+        <!-- Patient Name -->
+        <Label layoutX="25.0" layoutY="69.0" text="Session ID :">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Label>
+
+        <TextField fx:id="idTxt" managed="false" visible="false" />
+
+        <!-- Age -->
+        <Label layoutX="368.0" layoutY="69.0" text="Amount :">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Label>
+
+        <TextField fx:id="amountTxt" layoutX="368.0" layoutY="115.0" prefHeight="41.0" prefWidth="304.0">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </TextField>
+
+        <!-- Gender -->
+        <Label layoutX="710.0" layoutY="69.0" text="Payment Method :">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Label>
+
+        <!-- Contact Number -->
+        <Label layoutX="25.0" layoutY="185.0" text="Payment Date :">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Label>
+
+        <!-- Address -->
+        <Label layoutX="368.0" layoutY="185.0" text="Status :">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Label>
+
+        <!-- Buttons -->
+        <Button fx:id="saveBtn" layoutX="25.0" layoutY="299.0" onAction="#navigateSave" prefHeight="41.0" prefWidth="137.0" styleClass="button-save" stylesheets="@css/style.css" text="Save" />
+
+        <Button fx:id="updateBtn" layoutX="177.0" layoutY="299.0" onAction="#navigateUpdate" prefHeight="41.0" prefWidth="137.0" styleClass="button-update" stylesheets="@css/style.css" text="Update" />
+
+        <Button fx:id="deleteBtn" layoutX="329.0" layoutY="299.0" onAction="#navigateDelete" prefHeight="41.0" prefWidth="137.0" styleClass="button-delete" stylesheets="@css/style.css" text="Delete" />
+
+        <Button fx:id="resetBtn" layoutX="483.0" layoutY="299.0" onAction="#navigateReset" prefHeight="41.0" prefWidth="137.0" styleClass="button-reset" stylesheets="@css/style.css" text="Reset" />
+
+        <!-- Table -->
+        <TableView fx:id="paymentTable" layoutX="25.0" layoutY="367.0" prefHeight="308.0" prefWidth="1027.0" styleClass="therapist-table">
+
+            <columns>
+
+                <TableColumn fx:id="colPaymentId" prefWidth="150.0" text="Payment ID" />
+
+                <TableColumn fx:id="colSessionId" prefWidth="162.0" text="Session ID" />
+
+                <TableColumn fx:id="colAmount" prefWidth="179.0" text="Amount" />
+
+                <TableColumn fx:id="colPaymentMethod" prefWidth="198.0" text="Payment Method" />
+
+                <TableColumn fx:id="colPaymentDate" prefWidth="178.0" text="Payment Date" />
+
+                <TableColumn fx:id="colStatus" prefWidth="158.0" text="Status" />
+
+            </columns>
+
+        </TableView>
+      <ComboBox fx:id="sessionIdPicker" layoutX="25.0" layoutY="115.0" prefHeight="41.0" prefWidth="271.0" promptText="Enter Your Session ID" styleClass="choice-box" stylesheets="@css/style.css" />
+      <ComboBox fx:id="paymentMethodPicker" layoutX="710.0" layoutY="115.0" prefHeight="41.0" prefWidth="271.0" promptText="Enter Your Payment Method" styleClass="choice-box" stylesheets="@css/style.css" />
+      <ComboBox fx:id="statusPicker" layoutX="368.0" layoutY="228.0" prefHeight="41.0" prefWidth="271.0" promptText="Enter Your Status" styleClass="choice-box" stylesheets="@css/style.css" />
+      <DatePicker fx:id="datePicker" layoutX="25.0" layoutY="230.0" prefHeight="39.0" prefWidth="271.0" />
+
+    </children>
+
+</AnchorPane>

@@ -41,10 +41,10 @@ public class SessionBOImpl implements SessionBO {
         PatientEntity patientId = patientDAO.search(sessionDTO.getPatientId());
 
         SessionEntity sessionEntity = new SessionEntity(
-            sessionDTO.getSessionId(),
-            therapistId,
-            patientId,
-            sessionDTO.getDate()
+                sessionDTO.getSessionId(),
+                therapistId,
+                patientId,
+                sessionDTO.getDate()
         );
 
         return sessionDAO.update(sessionEntity);
@@ -82,10 +82,10 @@ public class SessionBOImpl implements SessionBO {
 
         for (SessionEntity sessionEntity : sessionEntities){
             sessionDTOS.add(new SessionDTO(
-                sessionEntity.getSessionId(),
-                sessionEntity.getTherapistId() != null ? sessionEntity.getTherapistId().getTherapistId() : null,
-                sessionEntity.getPatientId() != null ? sessionEntity.getPatientId().getPatientId() : null,
-                sessionEntity.getDate()
+                    sessionEntity.getSessionId(),
+                    sessionEntity.getTherapistId() != null ? sessionEntity.getTherapistId().getTherapistId() : null,
+                    sessionEntity.getPatientId() != null ? sessionEntity.getPatientId().getPatientId() : null,
+                    sessionEntity.getDate()
             ));
         }
 

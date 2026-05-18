@@ -10,7 +10,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class ProgramsController {
 
-    ProgramBO programBO = (ProgramBO) BOFactory.getInstance().getBO(BOFactory.BOTypes.PROGRAM);
+    private final ProgramBO programBO = (ProgramBO) BOFactory.getInstance().getBO(BOFactory.BOTypes.PROGRAM);
 
     @FXML
     private TableColumn<ProgramDTO, Double> colCost;

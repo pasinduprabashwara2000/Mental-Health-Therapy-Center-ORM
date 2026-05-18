@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class ProgramBOImpl implements ProgramBO {
 
-    ProgramDAO programDAO = (ProgramDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.PROGRAM);
+    private final ProgramDAO programDAO = (ProgramDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.PROGRAM);
 
     @Override
     public boolean save(ProgramDTO programDTO) throws Exception {

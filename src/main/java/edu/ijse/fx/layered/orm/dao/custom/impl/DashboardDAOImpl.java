@@ -1,97 +1,81 @@
 package edu.ijse.fx.layered.orm.dao.custom.impl;
 
 import edu.ijse.fx.layered.orm.config.FactoryConfiguration;
-import edu.ijse.fx.layered.orm.dao.custom.SessionDAO;
-import edu.ijse.fx.layered.orm.entity.SessionEntity;
+import edu.ijse.fx.layered.orm.dao.custom.DashboardDAO;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import java.util.ArrayList;
 
-public class SessionDAOImpl implements SessionDAO {
+public class DashboardDAOImpl implements DashboardDAO {
 
     FactoryConfiguration factoryConfiguration = FactoryConfiguration.getInstance();
 
     @Override
-    public boolean save(SessionEntity sessionEntity) throws Exception {
+    public int findTherapistCount() throws Exception {
+
+        Session session = factoryConfiguration.getSession();
+        Transaction transaction = session.beginTransaction();
+
+        try {
+            Long count = (Long) session.createQuery("SELECT COUNT(*) FROM TherapistEntity").uniqueResult();
+            transaction.commit();
+            return count.intValue();
+        } catch (Exception e) {
+            e.printStackTrace();
+            transaction.rollback();
+            return 0;
+        } finally {
+            session.close();
+        }
+
+    }
+
+    @Override
+    public int findProgramsCount() throws Exception {
+
+        Session session = factoryConfiguration.getSession();
+        Transaction transaction = session.beginTransaction();
+
+        try {
+            Long count = (Long)session.createQuery("SELECT COUNT(*) FROM ProgramEntity").uniqueResult();
+            transaction.commit();
+            return count.intValue();
+        } catch (Exception e) {
+            e.printStackTrace();
+            transaction.rollback();
+            return 0;
+        }
+
+    }
+
+    @Override
+    public int findSessionsCount() throws Exception {
 
         Session session = factoryConfiguration.getSession();
         Transaction transaction = session.beginTransaction();
         try {
-            session.persist(sessionEntity);
+            Long count = (Long) session.createQuery("SELECT COUNT(*) FROM SessionEntity").uniqueResult();
             transaction.commit();
-            return true;
+            return count.intValue();
         } catch (Exception e) {
             e.printStackTrace();
             transaction.rollback();
-            return false;
-        } finally {
-            session.close();
+            return 0;
         }
     }
 
     @Override
-    public boolean update(SessionEntity sessionEntity) throws Exception {
+    public double findTotalRevenue() throws Exception {
 
         Session session = factoryConfiguration.getSession();
         Transaction transaction = session.beginTransaction();
         try {
-            SessionEntity oldSession = session.find(SessionEntity.class, sessionEntity.getSessionId());
-            oldSession.getTherapistId();
-            oldSession.getPatientId();
-            oldSession.getDate();
+            Double profit = (Double)session.createQuery("SELECT SUM(amount) FROM PaymentEntity").uniqueResult();
             transaction.commit();
-            return true;
+            return profit.intValue();
         } catch (Exception e) {
             e.printStackTrace();
             transaction.rollback();
-            return false;
-        } finally {
-            session.close();
-        }
-    }
-
-    @Override
-    public boolean delete(String id) throws Exception {
-
-        Session session = factoryConfiguration.getSession();
-        Transaction transaction = session.beginTransaction();
-        try {
-            SessionEntity sessionEntity = session.find(SessionEntity.class, id);
-            session.remove(sessionEntity);
-            transaction.commit();
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            transaction.rollback();
-            return false;
-        } finally {
-            session.close();
-        }
-    }
-
-    @Override
-    public SessionEntity search(String id) throws Exception {
-        Session session = factoryConfiguration.getSession();
-        Transaction transaction = session.beginTransaction();
-        try {
-            SessionEntity sessionEntity = session.find(SessionEntity.class,id);
-            transaction.commit();
-            return sessionEntity;
-        } catch (Exception e) {
-            e.printStackTrace();
-            transaction.rollback();
-            return null;
-        } finally {
-            session.close();
-        }
-    }
-
-    @Override
-    public ArrayList<SessionEntity> getAll() throws Exception {
-
-        Session session = factoryConfiguration.getSession();
-        try {
-            return new ArrayList<>(session.createQuery("from SessionEntity", SessionEntity.class).list());
+            return 0.0;
         } finally {
             session.close();
         }
