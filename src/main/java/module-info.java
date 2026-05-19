@@ -5,6 +5,8 @@ module edu.ijse.fx.layered.orm {
     requires org.hibernate.orm.core;
     requires java.naming;
     requires jakarta.persistence;
+    requires java.desktop;
+    requires jasperreports;
 
     opens edu.ijse.fx.layered.orm to javafx.fxml;
     opens edu.ijse.fx.layered.orm.controller to javafx.fxml;

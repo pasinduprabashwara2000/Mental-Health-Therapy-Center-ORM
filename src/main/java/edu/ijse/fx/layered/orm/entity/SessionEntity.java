@@ -18,11 +18,11 @@ public class SessionEntity {
 
     @ManyToOne
     @JoinColumn(name = "therapist_id")
-    private TherapistEntity therapistId;
+    private TherapistEntity therapist;
 
     @ManyToOne
     @JoinColumn(name = "patient_id")
-    private PatientEntity patientId;
+    private PatientEntity patient;
 
     @Column(nullable = false)
     private LocalDate date;

@@ -1,0 +1,372 @@
+.root {
+    -fx-background-color: #f4f7fc;
+    -fx-font-family: "Poppins", "Segoe UI", sans-serif;
+}
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+
+.sidebar {
+    -fx-background-color: linear-gradient(to bottom, #1e3c72, #2a5298);
+}
+
+/* ============================================================
+   CONTENT AREA
+   ============================================================ */
+
+.content-pane {
+    -fx-background-color: #f4f7fc;
+    -fx-padding: 24px;
+}
+
+/* ============================================================
+   FORM ELEMENTS (Therapist Page)
+   ============================================================ */
+
+.label {
+    -fx-text-fill: #1e293b;
+}
+
+.text-field {
+    -fx-background-color: white;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 8px 12px;
+    -fx-font-size: 15px;
+}
+
+.text-field:focused {
+    -fx-border-color: #2a5298;
+    -fx-effect: dropshadow(gaussian, rgba(42,82,152,0.15), 6, 0, 0, 0);
+}
+
+/* ============================================================
+   CHOICE BOX
+   ============================================================ */
+
+.choice-box {
+    -fx-background-color: #f5f5f5;
+    -fx-border-color: #4a90e2;
+    -fx-border-width: 2px;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+    -fx-font-size: 14px;
+    -fx-padding: 5px;
+}
+
+.choice-box .label {
+    -fx-text-fill: #333333;
+}
+
+/* Dropdown background */
+.choice-box .context-menu {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #4a90e2;
+    -fx-border-width: 1px;
+}
+
+/* Each item in dropdown */
+.choice-box .menu-item {
+    -fx-background-color: transparent;
+    -fx-padding: 8px;
+}
+
+/* Hover effect on items */
+.choice-box .menu-item:hover {
+    -fx-background-color: #4a90e2;
+}
+
+/* Text inside dropdown items */
+.choice-box .menu-item .label {
+    -fx-text-fill: #333333;
+}
+
+/* Text color when hovering */
+.choice-box .menu-item:hover .label {
+    -fx-text-fill: white;
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+/* ── Primary action button ─────────────────── */
+.button-primary {
+    -fx-background-color: #2a5298;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #2a5298;
+    -fx-border-width: 1;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 8px 18px;
+}
+
+.button-primary:hover {
+    -fx-background-color: #1e3c72;
+    -fx-border-color: #1e3c72;
+}
+
+.button-primary:pressed {
+    -fx-background-color: #14304d;
+    -fx-scale-x: 0.97;
+    -fx-scale-y: 0.97;
+}
+
+/* ── Secondary / outlined button ─────────────────────────── */
+.button-secondary {
+    -fx-background-color: white;
+    -fx-text-fill: #2a5298;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #2a5298;
+    -fx-border-width: 1.5;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 8px 18px;
+}
+
+.button-secondary:hover {
+    -fx-background-color: #e8f0fb;
+}
+
+.button-secondary:pressed {
+    -fx-background-color: #d0e2f4;
+    -fx-scale-x: 0.97;
+    -fx-scale-y: 0.97;
+}
+
+.button-save {
+    -fx-background-color: #16a34a;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.button-save:hover {
+    -fx-background-color: #15803d;
+}
+
+.button-update {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.button-update:hover {
+    -fx-background-color: #1d4ed8;
+}
+
+.button-delete {
+    -fx-background-color: #dc2626;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.button-delete:hover {
+    -fx-background-color: #b91c1c;
+}
+
+.button-reset {
+    -fx-background-color: #f59e0b;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.button-reset:hover {
+    -fx-background-color: #d97706;
+    -fx-text-fill: white;
+}
+
+/* ============================================================
+   TABLE VIEW
+   ============================================================ */
+
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #dde6f0;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: linear-gradient(to right, #1e3c72, #2a5298);
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell {
+    -fx-background-color: white;
+    -fx-border-color: transparent transparent #eef2f7 transparent;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #f8fbff;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #dbeafe;
+}
+
+.therapist-table {
+    -fx-background-color: #f8fafc;
+    -fx-border-color: #94a3b8;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-table-cell-border-color: #e2e8f0;
+}
+
+.therapist-table .column-header-background {
+    -fx-background-color: #e2e8f0;
+    -fx-background-radius: 6 6 0 0;
+}
+
+.therapist-table .column-header {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent #cbd5e1 #cbd5e1 transparent;
+}
+
+.therapist-table .column-header .label {
+    -fx-text-fill: #0f172a;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.therapist-table .table-row-cell {
+    -fx-background-color: white;
+    -fx-border-color: transparent transparent #e2e8f0 transparent;
+}
+
+.therapist-table .table-row-cell:odd {
+    -fx-background-color: #f8fafc;
+}
+
+.therapist-table .table-row-cell:hover {
+    -fx-background-color: #ecfeff;
+}
+
+.therapist-table .table-row-cell:selected {
+    -fx-background-color: #bae6fd;
+    -fx-text-background-color: #0f172a;
+}
+
+/* ============================================================
+   DASHBOARD TABLE
+   ============================================================ */
+
+.dashboard-table {
+    -fx-background-color: white;
+    -fx-border-color: transparent;
+    -fx-background-radius: 10;
+    -fx-table-cell-border-color: #f1f5f9;
+}
+
+/* Header */
+.dashboard-table .column-header-background {
+    -fx-background-color: linear-gradient(to right, #1e3c72, #2a5298);
+    -fx-background-radius: 8 8 0 0;
+}
+
+.dashboard-table .column-header {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent rgba(255,255,255,0.15) transparent transparent;
+    -fx-border-width: 0 1 0 0;
+    -fx-padding: 0 10 0 10;
+}
+
+.dashboard-table .column-header:last-visible {
+    -fx-border-color: transparent;
+}
+
+.dashboard-table .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 10 0 10 0;
+}
+
+/* Sort arrow */
+.dashboard-table .column-header .arrow {
+    -fx-background-color: rgba(255,255,255,0.7);
+}
+
+/* Rows */
+.dashboard-table .table-row-cell {
+    -fx-background-color: white;
+    -fx-border-color: transparent transparent #f1f5f9 transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-cell-size: 44px;
+}
+
+.dashboard-table .table-row-cell:odd {
+    -fx-background-color: #f8fafc;
+}
+
+.dashboard-table .table-row-cell:hover {
+    -fx-background-color: #eff6ff;
+    -fx-cursor: hand;
+}
+
+.dashboard-table .table-row-cell:selected {
+    -fx-background-color: #dbeafe;
+}
+
+.dashboard-table .table-row-cell:selected .text {
+    -fx-fill: #1e3a5f;
+}
+
+/* Cells */
+.dashboard-table .table-cell {
+    -fx-text-fill: #334155;
+    -fx-font-size: 13px;
+    -fx-padding: 0 10 0 10;
+    -fx-alignment: CENTER_LEFT;
+    -fx-border-color: transparent;
+}
+
+/* First column — therapist ID badge style */
+.dashboard-table .table-row-cell .table-cell:first-child {
+    -fx-text-fill: #2563eb;
+    -fx-font-weight: bold;
+}
+
+/* Empty placeholder */
+.dashboard-table .placeholder .label {
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 13px;
+}
+
+/* Remove focus ring */
+.dashboard-table:focused {
+    -fx-background-color: white;
+}
+
+.dashboard-table .filler {
+    -fx-background-color: linear-gradient(to right, #1e3c72, #2a5298);
+}
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+
+.scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #cbd5e1;
+    -fx-background-radius: 10;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #94a3b8;
+}

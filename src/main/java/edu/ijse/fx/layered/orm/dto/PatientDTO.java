@@ -15,7 +15,7 @@ public class PatientDTO {
     private String name;
     private int age;
     private String gender;
-    private String contactNumber;
+    private int contactNumber;
     private String address;
     private String disease;
     private List<SessionEntity> sessions;

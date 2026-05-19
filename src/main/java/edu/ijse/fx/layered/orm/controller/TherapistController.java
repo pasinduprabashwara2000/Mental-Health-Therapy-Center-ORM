@@ -117,6 +117,11 @@ public class TherapistController {
         }
     }
 
+    private boolean isValidPhoneNumber(String phoneNumber) {
+        String regex = "^(\\+94|0)(7\\d{8}|1\\d{8}|2\\d{8}|3\\d{8}|4\\d{8}|5\\d{8}|6\\d{8}|8\\d{8}|9\\d{8})$";
+        return phoneNumber.matches(regex);
+    }
+
     @FXML
     void navigateDelete(ActionEvent event) {
         try {
@@ -145,13 +150,21 @@ public class TherapistController {
 
     @FXML
     void navigateSave(ActionEvent event) {
+
+        String contactNo = contactTxt.getText();
+
+        if (!isValidPhoneNumber(contactNo)){
+            new Alert(Alert.AlertType.ERROR,"Invalid Contact Number").show();
+            return;
+        }
+
         try {
             TherapistDTO therapistDTO = new TherapistDTO(
                     idTxt.getText(),
                     therapistTxt.getText(),
                     programSelect.getValue(),
                     specsTxt.getText(),
-                    Integer.parseInt(contactTxt.getText())
+                    Integer.parseInt(contactNo)
             );
             boolean isSaved = therapistBO.save(therapistDTO);
 
@@ -170,13 +183,20 @@ public class TherapistController {
 
     @FXML
     void navigateUpdate(ActionEvent event) {
+        String contactNo = contactTxt.getText();
+
+        if(!isValidPhoneNumber(contactNo)){
+            new Alert(Alert.AlertType.ERROR,"Invalid Contact Number").show();
+            return;
+        }
+
         try {
             TherapistDTO therapistDTO = new TherapistDTO(
                     idTxt.getText(),
                     therapistTxt.getText(),
                     programSelect.getValue(),
                     specsTxt.getText(),
-                    Integer.parseInt(contactTxt.getText())
+                    Integer.parseInt(contactNo)
             );
             boolean isUpdated = therapistBO.update(therapistDTO);
             if (isUpdated){

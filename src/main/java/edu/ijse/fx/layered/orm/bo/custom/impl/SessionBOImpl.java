@@ -68,8 +68,8 @@ public class SessionBOImpl implements SessionBO {
         if(sessionEntity != null){
             return new SessionDTO(
                     sessionEntity.getSessionId(),
-                    sessionEntity.getTherapistId() != null ? sessionEntity.getTherapistId().getTherapistId() : null,
-                    sessionEntity.getPatientId() !=null ? sessionEntity.getPatientId().getPatientId() : null,
+                    sessionEntity.getTherapist() != null ? sessionEntity.getTherapist().getTherapistId() : null,
+                    sessionEntity.getPatient() !=null ? sessionEntity.getPatient().getPatientId() : null,
                     sessionEntity.getDate(),
                     sessionEntity.getTime(),
                     sessionEntity.getStatus()
@@ -89,8 +89,8 @@ public class SessionBOImpl implements SessionBO {
         for (SessionEntity sessionEntity : sessionEntities){
             sessionDTOS.add(new SessionDTO(
                     sessionEntity.getSessionId(),
-                    sessionEntity.getTherapistId() != null ? sessionEntity.getTherapistId().getTherapistId() : null,
-                    sessionEntity.getPatientId() != null ? sessionEntity.getPatientId().getPatientId() : null,
+                    sessionEntity.getTherapist() != null ? sessionEntity.getTherapist().getTherapistId() : null,
+                    sessionEntity.getPatient() != null ? sessionEntity.getPatient().getPatientId() : null,
                     sessionEntity.getDate(),
                     sessionEntity.getTime(),
                     sessionEntity.getStatus()

@@ -34,16 +34,24 @@ public class MainMenuController {
 
     @FXML
     public void initialize() {
+
+        loadUI("Dashboard");
+
         dashboardBtn.setOnAction(event -> loadUI("Dashboard"));
         therapitsBtn.setOnAction(event -> loadUI("ManageTherapist"));
         programsBtn.setOnAction(event -> loadUI("ManagePrograms"));
-        reportsBtn.setOnAction(event -> loadUI("Report"));
+        reportsBtn.setOnAction(event -> loadUI("AdminReport"));
     }
 
     private void loadUI(String fxmlName) {
         try {
             String fxmlPath = "/edu/ijse/fx/layered/orm/" + fxmlName + ".fxml";
+
             URL fxmlLocation = getClass().getResource(fxmlPath);
+
+            if (fxmlLocation == null) {
+                throw new RuntimeException("FXML file not found: " + fxmlPath);
+            }
             Parent root = FXMLLoader.load(fxmlLocation);
             contentPane.getChildren().setAll(root);
 
@@ -53,7 +61,8 @@ public class MainMenuController {
         }
     }
 
-    public void navigateLogout(ActionEvent actionEvent) throws IOException {
+    public void navigateLogout(ActionEvent actionEvent) {
+
         try {
             Stage stage = (Stage) logoutBtn.getScene().getWindow();
 
@@ -66,10 +75,13 @@ public class MainMenuController {
             stage.setScene(scene);
             stage.sizeToScene();
             stage.centerOnScreen();
-            new Alert(Alert.AlertType.INFORMATION,"Logout Successfully !").show();
+
+            new Alert(Alert.AlertType.INFORMATION,
+                    "Logout Successfully !").show();
+
         } catch (Exception e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            new Alert(Alert.AlertType.ERROR,
+                    e.getMessage()).show();
         }
     }
-
 }
