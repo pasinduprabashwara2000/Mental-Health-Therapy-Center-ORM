@@ -13,9 +13,9 @@ import java.util.ArrayList;
 
 public class SessionBOImpl implements SessionBO {
 
-    SessionDAO sessionDAO = (SessionDAO)DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.SESSION);
-    TherapistDAO therapistDAO = (TherapistDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.THERAPIST);
-    PatientDAO patientDAO = (PatientDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.PATIENT);
+    private final SessionDAO sessionDAO = (SessionDAO)DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.SESSION);
+    private final TherapistDAO therapistDAO = (TherapistDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.THERAPIST);
+    private final PatientDAO patientDAO = (PatientDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.PATIENT);
 
     @Override
     public boolean save(SessionDTO sessionDTO) throws Exception {
@@ -27,7 +27,9 @@ public class SessionBOImpl implements SessionBO {
                 sessionDTO.getSessionId(),
                 therapistId,
                 patientId,
-                sessionDTO.getDate()
+                sessionDTO.getDate(),
+                sessionDTO.getTime(),
+                sessionDTO.getStatus()
         );
 
         return sessionDAO.save(sessionEntity);
@@ -44,7 +46,9 @@ public class SessionBOImpl implements SessionBO {
                 sessionDTO.getSessionId(),
                 therapistId,
                 patientId,
-                sessionDTO.getDate()
+                sessionDTO.getDate(),
+                sessionDTO.getTime(),
+                sessionDTO.getStatus()
         );
 
         return sessionDAO.update(sessionEntity);
@@ -66,7 +70,9 @@ public class SessionBOImpl implements SessionBO {
                     sessionEntity.getSessionId(),
                     sessionEntity.getTherapistId() != null ? sessionEntity.getTherapistId().getTherapistId() : null,
                     sessionEntity.getPatientId() !=null ? sessionEntity.getPatientId().getPatientId() : null,
-                    sessionEntity.getDate()
+                    sessionEntity.getDate(),
+                    sessionEntity.getTime(),
+                    sessionEntity.getStatus()
             );
         }
 
@@ -85,7 +91,9 @@ public class SessionBOImpl implements SessionBO {
                     sessionEntity.getSessionId(),
                     sessionEntity.getTherapistId() != null ? sessionEntity.getTherapistId().getTherapistId() : null,
                     sessionEntity.getPatientId() != null ? sessionEntity.getPatientId().getPatientId() : null,
-                    sessionEntity.getDate()
+                    sessionEntity.getDate(),
+                    sessionEntity.getTime(),
+                    sessionEntity.getStatus()
             ));
         }
 

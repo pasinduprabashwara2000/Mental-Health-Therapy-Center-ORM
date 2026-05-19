@@ -8,7 +8,7 @@ import edu.ijse.fx.layered.orm.entity.LoginEntity;
 
 public class LoginBOImpl implements LoginBO {
 
-    LoginDAO loginDAO = (LoginDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.LOGIN);
+    private final LoginDAO loginDAO = (LoginDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.LOGIN);
 
     @Override
     public LoginDTO findUsernameAndPassword(String username, String password) throws Exception {

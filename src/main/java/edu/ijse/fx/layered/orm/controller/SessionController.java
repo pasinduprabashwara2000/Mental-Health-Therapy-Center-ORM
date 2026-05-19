@@ -33,6 +33,12 @@ public class SessionController {
     private TableColumn<SessionDTO, String> colTherapistId;
 
     @FXML
+    private TableColumn<SessionDTO, String> colTime;
+
+    @FXML
+    private TableColumn<SessionDTO, String> colStatus;
+
+    @FXML
     private DatePicker datePicker;
 
     @FXML
@@ -42,7 +48,13 @@ public class SessionController {
     private TextField idTxt;
 
     @FXML
+    private TextField timeTxt;
+
+    @FXML
     private ComboBox<String> patientIdPicker;
+
+    @FXML
+    private ComboBox<String> statusPicker;
 
     @FXML
     private Button resetBtn;
@@ -66,6 +78,8 @@ public class SessionController {
         colTherapistId.setCellValueFactory(new PropertyValueFactory<>("therapistId"));
         colPatientId.setCellValueFactory(new PropertyValueFactory<>("patientId"));
         colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+        colTime.setCellValueFactory(new PropertyValueFactory<>("time"));
+        colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
 
         sessionTable.setOnMouseClicked(mouseEvent -> {
             if(mouseEvent.getClickCount() == 1){
@@ -76,6 +90,13 @@ public class SessionController {
         loadTherapist();
         loadPatient();
         loadTable();
+
+        statusPicker.getItems().addAll(
+                "Pending",
+                "Completed",
+                "Cancelled",
+                "Rescheduled"
+        );
 
     }
 
@@ -124,6 +145,8 @@ public class SessionController {
             therapistIdPicker.setValue(sessionDTO.getTherapistId());
             patientIdPicker.setValue(sessionDTO.getPatientId());
             datePicker.setValue(sessionDTO.getDate());
+            timeTxt.setText(sessionDTO.getTime());
+            statusPicker.setValue(sessionDTO.getStatus());
         }
     }
 
@@ -149,6 +172,8 @@ public class SessionController {
         therapistIdPicker.setValue(null);
         patientIdPicker.setValue(null);
         datePicker.setValue(null);
+        timeTxt.setText("");
+        statusPicker.setValue(null);
     }
 
     @FXML
@@ -158,7 +183,10 @@ public class SessionController {
                     idTxt.getText(),
                     therapistIdPicker.getValue(),
                     patientIdPicker.getValue(),
-                    datePicker.getValue()
+                    datePicker.getValue(),
+                    timeTxt.getText(),
+                    statusPicker.getValue()
+
             );
             boolean isSaved = sessionBO.save(sessionDTO);
             if(isSaved){
@@ -180,7 +208,9 @@ public class SessionController {
                     idTxt.getText(),
                     therapistIdPicker.getValue(),
                     patientIdPicker.getValue(),
-                    datePicker.getValue()
+                    datePicker.getValue(),
+                    timeTxt.getText(),
+                    statusPicker.getValue()
             );
             boolean isUpdated = sessionBO.update(sessionDTO);
             if(isUpdated){

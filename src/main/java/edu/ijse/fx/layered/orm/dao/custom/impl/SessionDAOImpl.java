@@ -36,9 +36,11 @@ public class SessionDAOImpl implements SessionDAO {
         Transaction transaction = session.beginTransaction();
         try {
             SessionEntity oldSession = session.find(SessionEntity.class, sessionEntity.getSessionId());
-            oldSession.getTherapistId();
-            oldSession.getPatientId();
-            oldSession.getDate();
+            oldSession.setTherapistId(sessionEntity.getTherapistId());
+            oldSession.setPatientId(sessionEntity.getPatientId());
+            oldSession.setDate(sessionEntity.getDate());
+            oldSession.setTime(sessionEntity.getTime());
+            oldSession.setStatus(sessionEntity.getStatus());
             transaction.commit();
             return true;
         } catch (Exception e) {

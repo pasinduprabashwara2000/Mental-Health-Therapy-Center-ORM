@@ -27,4 +27,10 @@ public class SessionEntity {
     @Column(nullable = false)
     private LocalDate date;
 
+    @Column(nullable = false)
+    private String time;
+
+    @Column(nullable = false)
+    private String status;
+
 }

@@ -14,5 +14,7 @@ public class SessionDTO {
     private String therapistId;
     private String patientId;
     private LocalDate date;
+    private String time;
+    private String status;
 
 }

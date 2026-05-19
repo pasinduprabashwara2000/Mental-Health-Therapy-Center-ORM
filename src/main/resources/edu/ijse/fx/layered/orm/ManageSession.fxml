@@ -33,20 +33,36 @@
                 <Font size="16.0" />
             </font>
         </Label>
-        <Button fx:id="saveBtn" layoutX="25.0" layoutY="190.0" mnemonicParsing="false" onAction="#navigateSave" prefHeight="41.0" prefWidth="137.0" styleClass="button-save" stylesheets="@css/style.css" text="Save" />
-        <Button fx:id="updateBtn" layoutX="177.0" layoutY="190.0" mnemonicParsing="false" onAction="#navigateUpdate" prefHeight="41.0" prefWidth="137.0" styleClass="button-update" stylesheets="@css/style.css" text="Update" />
-        <Button fx:id="deleteBtn" layoutX="329.0" layoutY="190.0" mnemonicParsing="false" onAction="#navigateDelete" prefHeight="41.0" prefWidth="137.0" styleClass="button-delete" stylesheets="@css/style.css" text="Delete" />
-        <Button fx:id="resetBtn" layoutX="483.0" layoutY="189.0" mnemonicParsing="false" onAction="#navigateReset" prefHeight="41.0" prefWidth="137.0" styleClass="button-reset" stylesheets="@css/style.css" text="Reset" />
-        <TableView fx:id="sessionTable" layoutX="25.0" layoutY="258.0" prefHeight="417.0" prefWidth="1027.0" styleClass="therapist-table">
+        <Button fx:id="saveBtn" layoutX="25.0" layoutY="297.0" mnemonicParsing="false" onAction="#navigateSave" prefHeight="41.0" prefWidth="137.0" styleClass="button-save" stylesheets="@css/style.css" text="Save" />
+        <Button fx:id="updateBtn" layoutX="177.0" layoutY="297.0" mnemonicParsing="false" onAction="#navigateUpdate" prefHeight="41.0" prefWidth="137.0" styleClass="button-update" stylesheets="@css/style.css" text="Update" />
+        <Button fx:id="deleteBtn" layoutX="329.0" layoutY="297.0" mnemonicParsing="false" onAction="#navigateDelete" prefHeight="41.0" prefWidth="137.0" styleClass="button-delete" stylesheets="@css/style.css" text="Delete" />
+        <Button fx:id="resetBtn" layoutX="483.0" layoutY="296.0" mnemonicParsing="false" onAction="#navigateReset" prefHeight="41.0" prefWidth="137.0" styleClass="button-reset" stylesheets="@css/style.css" text="Reset" />
+        <TableView fx:id="sessionTable" layoutX="25.0" layoutY="366.0" prefHeight="309.0" prefWidth="1027.0" styleClass="therapist-table">
+
             <columns>
-                <TableColumn fx:id="colSessionId" prefWidth="166.0" text="Session ID" />
-                <TableColumn fx:id="colTherapistId" prefWidth="183.0" text="Therapist ID" />
-                <TableColumn fx:id="colPatientId" prefWidth="182.0" text="Patient ID" />
-                <TableColumn fx:id="colDate" prefWidth="1168.0" text="Date" />
+                <TableColumn fx:id="colSessionId" prefWidth="150.0" text="Session ID" />
+                <TableColumn fx:id="colTherapistId" prefWidth="170.0" text="Therapist ID" />
+                <TableColumn fx:id="colPatientId" prefWidth="170.0" text="Patient ID" />
+                <TableColumn fx:id="colDate" prefWidth="160.0" text="Date" />
+                <TableColumn fx:id="colTime" prefWidth="160.0" text="Time" />
+                <TableColumn fx:id="colStatus" prefWidth="215.0" text="Status" />
             </columns>
+
         </TableView>
       <ComboBox fx:id="therapistIdPicker" layoutX="25.0" layoutY="117.0" prefHeight="41.0" prefWidth="288.0" promptText="Select Therapist ID" styleClass="choice-box" stylesheets="@css/style.css" />
       <ComboBox fx:id="patientIdPicker" layoutX="368.0" layoutY="117.0" prefHeight="41.0" prefWidth="288.0" promptText="Select Patient ID" styleClass="choice-box" stylesheets="@css/style.css" />
       <DatePicker fx:id="datePicker" layoutX="710.0" layoutY="118.0" prefHeight="39.0" prefWidth="288.0" stylesheets="@css/style.css" />
+      <Label layoutX="25.0" layoutY="178.0" prefHeight="41.0" prefWidth="278.0" text="Time : ">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="368.0" layoutY="178.0" prefHeight="41.0" prefWidth="278.0" text="Status  : ">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="statusPicker" layoutX="368.0" layoutY="226.0" prefHeight="41.0" prefWidth="288.0" promptText="Select Status" styleClass="choice-box" stylesheets="@css/style.css" />
+      <TextField fx:id="timeTxt" layoutX="25.0" layoutY="226.0" prefHeight="39.0" prefWidth="288.0" />
     </children>
 </AnchorPane>

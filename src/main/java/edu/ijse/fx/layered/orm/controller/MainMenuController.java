@@ -27,6 +27,9 @@ public class MainMenuController {
     private Button therapitsBtn;
 
     @FXML
+    private Button reportsBtn;
+
+    @FXML
     private Button logoutBtn;
 
     @FXML
@@ -34,6 +37,7 @@ public class MainMenuController {
         dashboardBtn.setOnAction(event -> loadUI("Dashboard"));
         therapitsBtn.setOnAction(event -> loadUI("ManageTherapist"));
         programsBtn.setOnAction(event -> loadUI("ManagePrograms"));
+        reportsBtn.setOnAction(event -> loadUI("Report"));
     }
 
     private void loadUI(String fxmlName) {
