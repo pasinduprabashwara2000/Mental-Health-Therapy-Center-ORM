@@ -22,6 +22,7 @@
         <mapping class="edu.ijse.fx.layered.orm.entity.SessionEntity"/>
         <mapping class="edu.ijse.fx.layered.orm.entity.PatientEntity"/>
         <mapping class="edu.ijse.fx.layered.orm.entity.PaymentEntity"/>
+        <mapping class="edu.ijse.fx.layered.orm.entity.LoginEntity"/>
 
     </session-factory>
 </hibernate-configuration>
