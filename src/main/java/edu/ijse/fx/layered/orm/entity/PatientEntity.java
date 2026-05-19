@@ -26,7 +26,7 @@ public class PatientEntity {
     private String gender;
 
     @Column(nullable = false, unique = true ,name = "contact_no", length = 10)
-    private String contactNumber;
+    private int contactNumber;
 
     @Column(nullable = false, length = 255)
     private String address;

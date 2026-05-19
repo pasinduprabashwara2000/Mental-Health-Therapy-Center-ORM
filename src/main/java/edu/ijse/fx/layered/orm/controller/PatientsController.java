@@ -111,7 +111,7 @@ public class PatientsController {
                 patientNameTxt.setText(patientDTO.getName());
                 ageTxt.setText(String.valueOf(patientDTO.getAge()));
                 genderChoiceBox.setValue(patientDTO.getGender());
-                contactTxt.setText(patientDTO.getContactNumber());
+                contactTxt.setText(String.valueOf(patientDTO.getContactNumber()));
                 addressTxt.setText(patientDTO.getAddress());
                 diseaseTxt.setText(patientDTO.getDisease());
             }
@@ -119,6 +119,13 @@ public class PatientsController {
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
+    }
+
+    private boolean isValidPhoneNumber(String phoneNumber) {
+
+        String regex = "^(\\+94|0)(7\\d{8}|1\\d{8}|2\\d{8}|3\\d{8}|4\\d{8}|5\\d{8}|6\\d{8}|8\\d{8}|9\\d{8})$";
+
+        return phoneNumber.matches(regex);
     }
 
     @FXML
@@ -150,13 +157,21 @@ public class PatientsController {
 
     @FXML
     void navigateSave(ActionEvent event) {
+
+        String contactNo = contactTxt.getText();
+
+        if(!isValidPhoneNumber(contactNo)){
+            new Alert(Alert.AlertType.ERROR,"Invalid Contact Number").show();
+            return;
+        }
+
         try {
             PatientDTO patientDTO = new PatientDTO(
                 idTxt.getText(),
                 patientNameTxt.getText(),
                 Integer.parseInt(ageTxt.getText()),
                 genderChoiceBox.getValue(),
-                contactTxt.getText(),
+                Integer.parseInt(contactNo),
                 addressTxt.getText(),
                 diseaseTxt.getText(),
                 null
@@ -176,13 +191,21 @@ public class PatientsController {
 
     @FXML
     void navigateUpdate(ActionEvent event) {
+
+        String contactNo = contactTxt.getText();
+
+        if(!isValidPhoneNumber(contactNo)){
+            new Alert(Alert.AlertType.ERROR,"Invalid Contact Number").show();
+            return;
+        }
+
         try{
             PatientDTO patientDTO = new PatientDTO(
                     idTxt.getText(),
                     patientNameTxt.getText(),
                     Integer.parseInt(ageTxt.getText()),
                     genderChoiceBox.getValue(),
-                    contactTxt.getText(),
+                    Integer.parseInt(contactNo),
                     addressTxt.getText(),
                     diseaseTxt.getText(),
                     null
