@@ -21,7 +21,7 @@
             </font>
         </Label>
 
-        <!-- Patient Name -->
+        <!-- Session ID -->
         <Label layoutX="25.0" layoutY="69.0" text="Session ID :">
             <font>
                 <Font size="16.0" />
@@ -30,7 +30,7 @@
 
         <TextField fx:id="idTxt" managed="false" visible="false" />
 
-        <!-- Age -->
+        <!-- Amount -->
         <Label layoutX="368.0" layoutY="69.0" text="Amount :">
             <font>
                 <Font size="16.0" />
@@ -43,21 +43,21 @@
             </font>
         </TextField>
 
-        <!-- Gender -->
+        <!-- Payment Method -->
         <Label layoutX="710.0" layoutY="69.0" text="Payment Method :">
             <font>
                 <Font size="16.0" />
             </font>
         </Label>
 
-        <!-- Contact Number -->
+        <!-- Payment Date -->
         <Label layoutX="25.0" layoutY="185.0" text="Payment Date :">
             <font>
                 <Font size="16.0" />
             </font>
         </Label>
 
-        <!-- Address -->
+        <!-- Status -->
         <Label layoutX="368.0" layoutY="185.0" text="Status :">
             <font>
                 <Font size="16.0" />
@@ -65,16 +65,19 @@
         </Label>
 
         <!-- Buttons -->
-        <Button fx:id="saveBtn" layoutX="25.0" layoutY="299.0" onAction="#navigateSave" prefHeight="41.0" prefWidth="137.0" styleClass="button-save" stylesheets="@css/style.css" text="Save" />
+        <Button fx:id="saveBtn" layoutX="25.0" layoutY="299.0" onAction="#navigateSave" prefHeight="41.0" prefWidth="120.0" styleClass="button-save" stylesheets="@css/style.css" text="Save" />
 
-        <Button fx:id="updateBtn" layoutX="177.0" layoutY="299.0" onAction="#navigateUpdate" prefHeight="41.0" prefWidth="137.0" styleClass="button-update" stylesheets="@css/style.css" text="Update" />
+        <Button fx:id="updateBtn" layoutX="155.0" layoutY="299.0" onAction="#navigateUpdate" prefHeight="41.0" prefWidth="120.0" styleClass="button-update" stylesheets="@css/style.css" text="Update" />
 
-        <Button fx:id="deleteBtn" layoutX="329.0" layoutY="299.0" onAction="#navigateDelete" prefHeight="41.0" prefWidth="137.0" styleClass="button-delete" stylesheets="@css/style.css" text="Delete" />
+        <Button fx:id="deleteBtn" layoutX="285.0" layoutY="299.0" onAction="#navigateDelete" prefHeight="41.0" prefWidth="120.0" styleClass="button-delete" stylesheets="@css/style.css" text="Delete" />
 
-        <Button fx:id="resetBtn" layoutX="483.0" layoutY="299.0" onAction="#navigateReset" prefHeight="41.0" prefWidth="137.0" styleClass="button-reset" stylesheets="@css/style.css" text="Reset" />
+        <Button fx:id="resetBtn" layoutX="415.0" layoutY="299.0" onAction="#navigateReset" prefHeight="41.0" prefWidth="120.0" styleClass="button-reset" stylesheets="@css/style.css" text="Reset" />
+
+        <!-- Print Invoice Button -->
+        <Button fx:id="printBtn" layoutX="902.0" layoutY="601.0" onAction="#navigatePrint" prefHeight="41.0" prefWidth="150.0" styleClass="button-print" stylesheets="@css/style.css" text="Print Invoice" />
 
         <!-- Table -->
-        <TableView fx:id="paymentTable" layoutX="25.0" layoutY="367.0" prefHeight="308.0" prefWidth="1027.0" styleClass="therapist-table">
+        <TableView fx:id="paymentTable" layoutX="25.0" layoutY="367.0" prefHeight="218.0" prefWidth="1027.0" styleClass="therapist-table">
 
             <columns>
 
@@ -93,10 +96,11 @@
             </columns>
 
         </TableView>
-      <ComboBox fx:id="sessionIdPicker" layoutX="25.0" layoutY="115.0" prefHeight="41.0" prefWidth="271.0" promptText="Enter Your Session ID" styleClass="choice-box" stylesheets="@css/style.css" />
-      <ComboBox fx:id="paymentMethodPicker" layoutX="710.0" layoutY="115.0" prefHeight="41.0" prefWidth="271.0" promptText="Enter Your Payment Method" styleClass="choice-box" stylesheets="@css/style.css" />
-      <ComboBox fx:id="statusPicker" layoutX="368.0" layoutY="228.0" prefHeight="41.0" prefWidth="271.0" promptText="Enter Your Status" styleClass="choice-box" stylesheets="@css/style.css" />
-      <DatePicker fx:id="datePicker" layoutX="25.0" layoutY="230.0" prefHeight="39.0" prefWidth="271.0" />
+
+        <ComboBox fx:id="sessionIdPicker" layoutX="25.0" layoutY="115.0" prefHeight="41.0" prefWidth="271.0" promptText="Enter Your Session ID" styleClass="choice-box" stylesheets="@css/style.css" />
+        <ComboBox fx:id="paymentMethodPicker" layoutX="710.0" layoutY="115.0" prefHeight="41.0" prefWidth="271.0" promptText="Enter Your Payment Method" styleClass="choice-box" stylesheets="@css/style.css" />
+        <ComboBox fx:id="statusPicker" layoutX="368.0" layoutY="228.0" prefHeight="41.0" prefWidth="271.0" promptText="Enter Your Status" styleClass="choice-box" stylesheets="@css/style.css" />
+        <DatePicker fx:id="datePicker" layoutX="25.0" layoutY="230.0" prefHeight="39.0" prefWidth="271.0" />
 
     </children>
 

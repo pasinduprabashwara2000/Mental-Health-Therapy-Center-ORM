@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports
+              http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="invoice" pageWidth="595" pageHeight="842"
+              columnWidth="555" leftMargin="20" rightMargin="20"
+              topMargin="20" bottomMargin="20">
+
+    <!-- Parameters -->
+    <parameter name="paymentId"     class="java.lang.String"/>
+    <parameter name="sessionId"     class="java.lang.String"/>
+    <parameter name="amount"        class="java.lang.Double"/>
+    <parameter name="paymentMethod" class="java.lang.String"/>
+    <parameter name="paymentDate"   class="java.lang.String"/>
+    <parameter name="status"        class="java.lang.String"/>
+
+    <title>
+        <band height="620">
+
+            <!-- ===== HEADER BACKGROUND ===== -->
+            <rectangle>
+                <reportElement x="0" y="0" width="555" height="90" backcolor="#1A73E8" forecolor="#1A73E8"/>
+                <graphicElement>
+                    <pen lineWidth="0.0"/>
+                </graphicElement>
+            </rectangle>
+
+            <!-- Hospital Name -->
+            <staticText>
+                <reportElement x="0" y="10" width="555" height="35" forecolor="#FFFFFF"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="26" isBold="true" fontName="SansSerif"/>
+                </textElement>
+                <text><![CDATA[CITY CARE HOSPITAL]]></text>
+            </staticText>
+
+            <!-- Hospital Tagline -->
+            <staticText>
+                <reportElement x="0" y="48" width="555" height="18" forecolor="#BBDEFB"/>
+                <textElement textAlignment="Center">
+                    <font size="11" isItalic="true" fontName="SansSerif"/>
+                </textElement>
+                <text><![CDATA[Your Health, Our Priority  |  Tel: +94 11 234 5678  |  www.citycarehospital.lk]]></text>
+            </staticText>
+
+            <!-- ===== INVOICE TITLE BAND ===== -->
+            <rectangle>
+                <reportElement x="0" y="95" width="555" height="35" backcolor="#E3F2FD" forecolor="#E3F2FD"/>
+                <graphicElement>
+                    <pen lineWidth="0.0"/>
+                </graphicElement>
+            </rectangle>
+
+            <staticText>
+                <reportElement x="0" y="95" width="555" height="35" forecolor="#1A73E8"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="16" isBold="true" fontName="SansSerif"/>
+                </textElement>
+                <text><![CDATA[PAYMENT INVOICE]]></text>
+            </staticText>
+
+            <!-- ===== DIVIDER ===== -->
+            <line>
+                <reportElement x="0" y="135" width="555" height="1" forecolor="#1A73E8"/>
+                <graphicElement>
+                    <pen lineWidth="2.0"/>
+                </graphicElement>
+            </line>
+
+            <!-- ===== DETAILS SECTION BACKGROUND ===== -->
+            <rectangle>
+                <reportElement x="0" y="145" width="555" height="310" backcolor="#F8F9FA" forecolor="#DEE2E6"/>
+                <graphicElement>
+                    <pen lineWidth="1.0"/>
+                </graphicElement>
+            </rectangle>
+
+            <!-- Section Label -->
+            <staticText>
+                <reportElement x="15" y="155" width="525" height="22" forecolor="#1A73E8"/>
+                <textElement>
+                    <font size="12" isBold="true" fontName="SansSerif"/>
+                </textElement>
+                <text><![CDATA[Payment Details]]></text>
+            </staticText>
+
+            <line>
+                <reportElement x="15" y="178" width="525" height="1" forecolor="#1A73E8"/>
+            </line>
+
+            <!-- ===== ROW 1: Payment ID ===== -->
+            <rectangle>
+                <reportElement x="15" y="185" width="525" height="36" backcolor="#FFFFFF" forecolor="#DEE2E6"/>
+                <graphicElement><pen lineWidth="0.5"/></graphicElement>
+            </rectangle>
+            <staticText>
+                <reportElement x="25" y="185" width="200" height="36" forecolor="#555555"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="11" isBold="true" fontName="SansSerif"/>
+                </textElement>
+                <text><![CDATA[Payment ID]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="230" y="185" width="300" height="36" forecolor="#212121"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="11" fontName="SansSerif"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{paymentId}]]></textFieldExpression>
+            </textField>
+
+            <!-- ===== ROW 2: Session ID ===== -->
+            <rectangle>
+                <reportElement x="15" y="221" width="525" height="36" backcolor="#F1F8FF" forecolor="#DEE2E6"/>
+                <graphicElement><pen lineWidth="0.5"/></graphicElement>
+            </rectangle>
+            <staticText>
+                <reportElement x="25" y="221" width="200" height="36" forecolor="#555555"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="11" isBold="true" fontName="SansSerif"/>
+                </textElement>
+                <text><![CDATA[Session ID]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="230" y="221" width="300" height="36" forecolor="#212121"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="11" fontName="SansSerif"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{sessionId}]]></textFieldExpression>
+            </textField>
+
+            <!-- ===== ROW 3: Payment Method ===== -->
+            <rectangle>
+                <reportElement x="15" y="257" width="525" height="36" backcolor="#FFFFFF" forecolor="#DEE2E6"/>
+                <graphicElement><pen lineWidth="0.5"/></graphicElement>
+            </rectangle>
+            <staticText>
+                <reportElement x="25" y="257" width="200" height="36" forecolor="#555555"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="11" isBold="true" fontName="SansSerif"/>
+                </textElement>
+                <text><![CDATA[Payment Method]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="230" y="257" width="300" height="36" forecolor="#212121"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="11" fontName="SansSerif"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{paymentMethod}]]></textFieldExpression>
+            </textField>
+
+            <!-- ===== ROW 4: Payment Date ===== -->
+            <rectangle>
+                <reportElement x="15" y="293" width="525" height="36" backcolor="#F1F8FF" forecolor="#DEE2E6"/>
+                <graphicElement><pen lineWidth="0.5"/></graphicElement>
+            </rectangle>
+            <staticText>
+                <reportElement x="25" y="293" width="200" height="36" forecolor="#555555"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="11" isBold="true" fontName="SansSerif"/>
+                </textElement>
+                <text><![CDATA[Payment Date]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="230" y="293" width="300" height="36" forecolor="#212121"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="11" fontName="SansSerif"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{paymentDate}]]></textFieldExpression>
+            </textField>
+
+            <!-- ===== ROW 5: Status ===== -->
+            <rectangle>
+                <reportElement x="15" y="329" width="525" height="36" backcolor="#FFFFFF" forecolor="#DEE2E6"/>
+                <graphicElement><pen lineWidth="0.5"/></graphicElement>
+            </rectangle>
+            <staticText>
+                <reportElement x="25" y="329" width="200" height="36" forecolor="#555555"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="11" isBold="true" fontName="SansSerif"/>
+                </textElement>
+                <text><![CDATA[Status]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="230" y="329" width="300" height="36" forecolor="#27AE60"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="11" isBold="true" fontName="SansSerif"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{status}]]></textFieldExpression>
+            </textField>
+
+            <!-- ===== AMOUNT BOX ===== -->
+            <rectangle>
+                <reportElement x="0" y="470" width="555" height="65" backcolor="#1A73E8" forecolor="#1A73E8"/>
+                <graphicElement><pen lineWidth="0.0"/></graphicElement>
+            </rectangle>
+            <staticText>
+                <reportElement x="15" y="470" width="250" height="65" forecolor="#FFFFFF"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="14" isBold="true" fontName="SansSerif"/>
+                </textElement>
+                <text><![CDATA[Total Amount Paid]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="265" y="470" width="275" height="65" forecolor="#FFFFFF"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="20" isBold="true" fontName="SansSerif"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Rs. " + String.format("%.2f", $P{amount})]]></textFieldExpression>
+            </textField>
+
+            <!-- ===== FOOTER NOTE ===== -->
+            <staticText>
+                <reportElement x="0" y="550" width="555" height="20" forecolor="#888888"/>
+                <textElement textAlignment="Center">
+                    <font size="9" isItalic="true" fontName="SansSerif"/>
+                </textElement>
+                <text><![CDATA[Thank you for choosing City Care Hospital. Please keep this invoice for your records.]]></text>
+            </staticText>
+
+            <line>
+                <reportElement x="0" y="575" width="555" height="1" forecolor="#1A73E8"/>
+                <graphicElement><pen lineWidth="1.0"/></graphicElement>
+            </line>
+
+            <staticText>
+                <reportElement x="0" y="580" width="555" height="20" forecolor="#AAAAAA"/>
+                <textElement textAlignment="Center">
+                    <font size="8" fontName="SansSerif"/>
+                </textElement>
+                <text><![CDATA[City Care Hospital  |  No. 45, Hospital Road, Colombo 07, Sri Lanka  |  info@citycarehospital.lk]]></text>
+            </staticText>
+
+        </band>
+    </title>
+
+    <detail>
+        <band height="0"/>
+    </detail>
+
+</jasperReport>

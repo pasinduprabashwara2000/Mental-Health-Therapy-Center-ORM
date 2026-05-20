@@ -181,6 +181,18 @@
     -fx-text-fill: white;
 }
 
+.button-print {
+    -fx-background-color: #2196F3;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.button-print:hover {
+    -fx-background-color: #1976D2;
+}
+
 /* ============================================================
    TABLE VIEW
    ============================================================ */

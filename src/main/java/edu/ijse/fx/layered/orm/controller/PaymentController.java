@@ -9,9 +9,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.view.JasperViewer;
 
+import java.io.File;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PaymentController {
 
@@ -68,6 +74,9 @@ public class PaymentController {
 
     @FXML
     private Button updateBtn;
+
+    @FXML
+    private Button printBtn;
 
     @FXML
     void initialize(){
@@ -144,6 +153,50 @@ public class PaymentController {
             paymentMethodPicker.setValue(paymentDTO.getPaymentMethod());
             datePicker.setValue(paymentDTO.getPaymentDate());
             statusPicker.setValue(paymentDTO.getStatus());
+        }
+    }
+
+    @FXML
+    void navigatePrint(ActionEvent event) {
+        PaymentDTO selected = paymentTable.getSelectionModel().getSelectedItem();
+
+        if (selected == null) {
+            new Alert(Alert.AlertType.WARNING, "Please select a payment to print.").show();
+            return;
+        }
+
+        try {
+            // Use absolute path directly — no classpath lookup
+            String reportPath = "src/main/resources/edu/ijse/fx/layered/orm/reports/invoice.jrxml";
+
+            File reportFile = new File(reportPath);
+
+            if (!reportFile.exists()) {
+                new Alert(Alert.AlertType.ERROR,
+                        "Report file not found at: " + reportFile.getAbsolutePath()).show();
+                return;
+            }
+
+            JasperReport jasperReport = JasperCompileManager.compileReport(
+                    reportFile.getAbsolutePath());
+
+            Map<String, Object> params = new HashMap<>();
+            params.put("paymentId",     selected.getPaymentId());
+            params.put("sessionId",     selected.getSessionId());
+            params.put("amount",        selected.getAmount());
+            params.put("paymentMethod", selected.getPaymentMethod());
+            params.put("paymentDate",   selected.getPaymentDate() != null ?
+                    selected.getPaymentDate().toString() : "N/A");
+            params.put("status",        selected.getStatus());
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(
+                    jasperReport, params, new JREmptyDataSource());
+
+            JasperViewer.viewReport(jasperPrint, false);
+
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, "Failed to generate invoice: " + e.getMessage()).show();
+            e.printStackTrace();
         }
     }
 
