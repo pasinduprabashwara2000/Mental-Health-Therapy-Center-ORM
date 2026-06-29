@@ -13,9 +13,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-import net.sf.jasperreports.engine.export.JRPdfExporter;
 import net.sf.jasperreports.export.SimpleExporterInput;
 import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
+import net.sf.jasperreports.pdf.JRPdfExporter;
 
 import java.awt.Desktop;
 import java.io.File;
@@ -29,68 +29,27 @@ public class AdminReportController {
 
     private final AdminReportBO reportBO = (AdminReportBO) BOFactory.getInstance().getBO(BOFactory.BOTypes.ADMINREPORT);
 
-    @FXML
-    private BarChart<String, Number> barTherapistPerformance;
-
-    @FXML
-    private CategoryAxis barXAxis;
-
-    @FXML
-    private NumberAxis barYAxis;
-
-    @FXML
-    private PieChart pieSessionStats;
-
-    @FXML
-    private DatePicker txtFromDate;
-
-    @FXML
-    private DatePicker txtToDate;
-
-    @FXML
-    private ComboBox<String> cmbTherapist;
-
-    @FXML
-    private ComboBox<String> cmbSessionType;
-
-    @FXML
-    private Button btnGenerate;
-
-    @FXML
-    private Button btnClear;
-
-    @FXML
-    private Label lblTotalSessions;
-
-    @FXML
-    private Label lblCompletedSessions;
-
-    @FXML
-    private Label lblCancelledSessions;
-
-    @FXML
-    private Label lblAvgPerformance;
-
-    @FXML
-    private TableView<AdminReportDTO> tblReports;
-
-    @FXML
-    private TableColumn<AdminReportDTO, String> colTherapistId;
-
-    @FXML
-    private TableColumn<AdminReportDTO, String> colTherapistName;
-
-    @FXML
-    private TableColumn<AdminReportDTO, Integer> colSessionCount;
-
-    @FXML
-    private TableColumn<AdminReportDTO, Integer> colCompletedSessions;
-
-    @FXML
-    private TableColumn<AdminReportDTO, Integer> colCancelledSessions;
-
-    @FXML
-    private TableColumn<AdminReportDTO, String> colPerformance;
+    @FXML private BarChart<String, Number> barTherapistPerformance;
+    @FXML private CategoryAxis barXAxis;
+    @FXML private NumberAxis barYAxis;
+    @FXML private PieChart pieSessionStats;
+    @FXML private DatePicker txtFromDate;
+    @FXML private DatePicker txtToDate;
+    @FXML private ComboBox<String> cmbTherapist;
+    @FXML private ComboBox<String> cmbSessionType;
+    @FXML private Button btnGenerate;
+    @FXML private Button btnClear;
+    @FXML private Label lblTotalSessions;
+    @FXML private Label lblCompletedSessions;
+    @FXML private Label lblCancelledSessions;
+    @FXML private Label lblAvgPerformance;
+    @FXML private TableView<AdminReportDTO> tblReports;
+    @FXML private TableColumn<AdminReportDTO, String> colTherapistId;
+    @FXML private TableColumn<AdminReportDTO, String> colTherapistName;
+    @FXML private TableColumn<AdminReportDTO, Integer> colSessionCount;
+    @FXML private TableColumn<AdminReportDTO, Integer> colCompletedSessions;
+    @FXML private TableColumn<AdminReportDTO, Integer> colCancelledSessions;
+    @FXML private TableColumn<AdminReportDTO, String> colPerformance;
 
     private ArrayList<AdminReportDTO> currentReports = new ArrayList<>();
 
@@ -110,7 +69,7 @@ public class AdminReportController {
         colCompletedSessions.setCellValueFactory(new PropertyValueFactory<>("completedSessions"));
         colCancelledSessions.setCellValueFactory(new PropertyValueFactory<>("cancelledSessions"));
         colPerformance.setCellValueFactory(data ->
-                new ReadOnlyObjectWrapper<>(data.getValue().getPerformancePrecent() + "%"));
+                new ReadOnlyObjectWrapper<>(data.getValue().getPerformancePercent() + "%"));
 
         colPerformance.setCellFactory(col -> new TableCell<>() {
             @Override
@@ -155,7 +114,7 @@ public class AdminReportController {
     private void generateReport() {
         LocalDate from       = txtFromDate.getValue();
         LocalDate to         = txtToDate.getValue();
-        String   therapistId = cmbTherapist.getValue();
+        String    therapistId = cmbTherapist.getValue();
 
         if (from != null && to != null && from.isAfter(to)) {
             showAlert(Alert.AlertType.WARNING, "'From Date' must be before 'To Date'.");
@@ -185,7 +144,7 @@ public class AdminReportController {
                 total     += r.getTotalSessions();
                 completed += r.getCompletedSessions();
                 cancelled += r.getCancelledSessions();
-                totalPerf += r.getPerformancePrecent();
+                totalPerf += r.getPerformancePercent();
             }
             double avgPerf = currentReports.isEmpty() ? 0
                     : Math.round(totalPerf / currentReports.size() * 10.0) / 10.0;
@@ -207,9 +166,7 @@ public class AdminReportController {
             }
 
             JasperReport jasperReport = JasperCompileManager.compileReport(jrxmlStream);
-
-            JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(
-                    currentReports.isEmpty() ? java.util.List.of(new AdminReportDTO()) : currentReports);
+            JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(currentReports);
 
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, dataSource);
 
@@ -225,8 +182,8 @@ public class AdminReportController {
             showAlert(Alert.AlertType.INFORMATION,
                     "Report generated successfully!\nSaved to: " + outputFile.getAbsolutePath());
 
-            if (Desktop.isDesktopSupported()) {
-                Desktop.getDesktop().open(outputFile);
+            if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+                Desktop.getDesktop().browse(outputFile.toURI());
             }
 
         } catch (Exception e) {
@@ -277,7 +234,7 @@ public class AdminReportController {
             total     += r.getTotalSessions();
             completed += r.getCompletedSessions();
             cancelled += r.getCancelledSessions();
-            totalPerf += r.getPerformancePrecent();
+            totalPerf += r.getPerformancePercent();
         }
         double avgPerf = reports.isEmpty() ? 0 : Math.round(totalPerf / reports.size() * 10.0) / 10.0;
 

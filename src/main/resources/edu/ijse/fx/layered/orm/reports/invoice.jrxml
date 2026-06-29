@@ -1,241 +1,324 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN"
+		"http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
-              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports
+			  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			  xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports
               http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
-              name="invoice" pageWidth="595" pageHeight="842"
-              columnWidth="555" leftMargin="20" rightMargin="20"
-              topMargin="20" bottomMargin="20">
+			  name="invoice"
+			  language="java"
+			  pageWidth="595" pageHeight="842"
+			  columnWidth="555" leftMargin="20" rightMargin="20"
+			  topMargin="20" bottomMargin="20"
+			  uuid="0f77135f-2a97-4b24-a8cc-4133910d9754">
 
-    <!-- Parameters -->
-    <parameter name="paymentId"     class="java.lang.String"/>
-    <parameter name="sessionId"     class="java.lang.String"/>
-    <parameter name="amount"        class="java.lang.Double"/>
-    <parameter name="paymentMethod" class="java.lang.String"/>
-    <parameter name="paymentDate"   class="java.lang.String"/>
-    <parameter name="status"        class="java.lang.String"/>
+	<parameter name="paymentId"     class="java.lang.String"/>
+	<parameter name="sessionId"     class="java.lang.String"/>
+	<parameter name="amount"        class="java.lang.Double"/>
+	<parameter name="paymentMethod" class="java.lang.String"/>
+	<parameter name="paymentDate"   class="java.lang.String"/>
+	<parameter name="status"        class="java.lang.String"/>
 
-    <title>
-        <band height="620">
+	<!-- ═══════════════ TITLE ═══════════════ -->
+	<title>
+		<band height="620" splitType="Stretch">
 
-            <!-- ===== HEADER BACKGROUND ===== -->
-            <rectangle>
-                <reportElement x="0" y="0" width="555" height="90" backcolor="#1A73E8" forecolor="#1A73E8"/>
-                <graphicElement>
-                    <pen lineWidth="0.0"/>
-                </graphicElement>
-            </rectangle>
+			<!-- Blue header bar -->
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="90"
+							   forecolor="#1A73E8" backcolor="#1A73E8"
+							   uuid="ea208088-c415-42a1-b434-40f490c7eba4"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
 
-            <!-- Hospital Name -->
-            <staticText>
-                <reportElement x="0" y="10" width="555" height="35" forecolor="#FFFFFF"/>
-                <textElement textAlignment="Center" verticalAlignment="Middle">
-                    <font size="26" isBold="true" fontName="SansSerif"/>
-                </textElement>
-                <text><![CDATA[CITY CARE HOSPITAL]]></text>
-            </staticText>
+			<!-- Center title text -->
+			<staticText>
+				<reportElement x="0" y="5" width="555" height="40"
+							   forecolor="#FFFFFF"
+							   uuid="title-main"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MediCare Mental Therapy Center]]></text>
+			</staticText>
 
-            <!-- Hospital Tagline -->
-            <staticText>
-                <reportElement x="0" y="48" width="555" height="18" forecolor="#BBDEFB"/>
-                <textElement textAlignment="Center">
-                    <font size="11" isItalic="true" fontName="SansSerif"/>
-                </textElement>
-                <text><![CDATA[Your Health, Our Priority  |  Tel: +94 11 234 5678  |  www.citycarehospital.lk]]></text>
-            </staticText>
+			<!-- Subtitle / contact -->
+			<staticText>
+				<reportElement x="0" y="48" width="555" height="18"
+							   forecolor="#BBDEFB"
+							   uuid="a76ab4c7-82f7-4628-854f-6c18015d51ea"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="11" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Your Health, Our Priority  |  Tel: +94 11 234 5678  |  www.medicare.lk]]></text>
+			</staticText>
 
-            <!-- ===== INVOICE TITLE BAND ===== -->
-            <rectangle>
-                <reportElement x="0" y="95" width="555" height="35" backcolor="#E3F2FD" forecolor="#E3F2FD"/>
-                <graphicElement>
-                    <pen lineWidth="0.0"/>
-                </graphicElement>
-            </rectangle>
+			<!-- Light blue sub-header band -->
+			<rectangle>
+				<reportElement x="0" y="95" width="555" height="35"
+							   forecolor="#E3F2FD" backcolor="#E3F2FD"
+							   uuid="348048bf-dca4-438e-9e10-47f04a9dfe46"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
 
-            <staticText>
-                <reportElement x="0" y="95" width="555" height="35" forecolor="#1A73E8"/>
-                <textElement textAlignment="Center" verticalAlignment="Middle">
-                    <font size="16" isBold="true" fontName="SansSerif"/>
-                </textElement>
-                <text><![CDATA[PAYMENT INVOICE]]></text>
-            </staticText>
+			<!-- PAYMENT INVOICE label -->
+			<staticText>
+				<reportElement x="0" y="95" width="555" height="35"
+							   forecolor="#1A73E8"
+							   uuid="378c89b2-c6e6-4701-9435-71a246d79999"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PAYMENT INVOICE]]></text>
+			</staticText>
 
-            <!-- ===== DIVIDER ===== -->
-            <line>
-                <reportElement x="0" y="135" width="555" height="1" forecolor="#1A73E8"/>
-                <graphicElement>
-                    <pen lineWidth="2.0"/>
-                </graphicElement>
-            </line>
+			<!-- Separator line -->
+			<line>
+				<reportElement x="0" y="135" width="555" height="1"
+							   forecolor="#1A73E8"
+							   uuid="90560ab9-bb7c-4615-9b94-7d3964ef410a"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</line>
 
-            <!-- ===== DETAILS SECTION BACKGROUND ===== -->
-            <rectangle>
-                <reportElement x="0" y="145" width="555" height="310" backcolor="#F8F9FA" forecolor="#DEE2E6"/>
-                <graphicElement>
-                    <pen lineWidth="1.0"/>
-                </graphicElement>
-            </rectangle>
+			<!-- Details card background -->
+			<rectangle>
+				<reportElement x="0" y="145" width="555" height="310"
+							   forecolor="#DEE2E6" backcolor="#F8F9FA"
+							   uuid="e7f7d283-a667-4d0d-891f-6b38486df2d6"/>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</rectangle>
 
-            <!-- Section Label -->
-            <staticText>
-                <reportElement x="15" y="155" width="525" height="22" forecolor="#1A73E8"/>
-                <textElement>
-                    <font size="12" isBold="true" fontName="SansSerif"/>
-                </textElement>
-                <text><![CDATA[Payment Details]]></text>
-            </staticText>
+			<!-- Payment Details heading -->
+			<staticText>
+				<reportElement x="15" y="155" width="525" height="22"
+							   forecolor="#1A73E8"
+							   uuid="1384dec4-dcd8-4e07-9a2c-d6381c0c0ba9"/>
+				<textElement>
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Payment Details]]></text>
+			</staticText>
 
-            <line>
-                <reportElement x="15" y="178" width="525" height="1" forecolor="#1A73E8"/>
-            </line>
+			<line>
+				<reportElement x="15" y="178" width="525" height="1"
+							   forecolor="#1A73E8"
+							   uuid="003d8bd9-90e5-43fb-901e-f61d4a3a4d7f"/>
+			</line>
 
-            <!-- ===== ROW 1: Payment ID ===== -->
-            <rectangle>
-                <reportElement x="15" y="185" width="525" height="36" backcolor="#FFFFFF" forecolor="#DEE2E6"/>
-                <graphicElement><pen lineWidth="0.5"/></graphicElement>
-            </rectangle>
-            <staticText>
-                <reportElement x="25" y="185" width="200" height="36" forecolor="#555555"/>
-                <textElement verticalAlignment="Middle">
-                    <font size="11" isBold="true" fontName="SansSerif"/>
-                </textElement>
-                <text><![CDATA[Payment ID]]></text>
-            </staticText>
-            <textField>
-                <reportElement x="230" y="185" width="300" height="36" forecolor="#212121"/>
-                <textElement verticalAlignment="Middle">
-                    <font size="11" fontName="SansSerif"/>
-                </textElement>
-                <textFieldExpression><![CDATA[$P{paymentId}]]></textFieldExpression>
-            </textField>
+			<!-- ── Row 1: Payment ID ── -->
+			<rectangle>
+				<reportElement x="15" y="185" width="525" height="36"
+							   forecolor="#DEE2E6" backcolor="#FFFFFF"
+							   uuid="ce039dad-8ee6-4e8b-8381-e1655267c369"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="25" y="185" width="200" height="36"
+							   forecolor="#555555"
+							   uuid="c2ce25fc-d845-4ea5-9325-ef44cd1326f5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Payment ID]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="230" y="185" width="300" height="36"
+							   forecolor="#212121"
+							   uuid="0f64fe26-867f-4abd-9282-580bb8f6cacd"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{paymentId}]]></textFieldExpression>
+			</textField>
 
-            <!-- ===== ROW 2: Session ID ===== -->
-            <rectangle>
-                <reportElement x="15" y="221" width="525" height="36" backcolor="#F1F8FF" forecolor="#DEE2E6"/>
-                <graphicElement><pen lineWidth="0.5"/></graphicElement>
-            </rectangle>
-            <staticText>
-                <reportElement x="25" y="221" width="200" height="36" forecolor="#555555"/>
-                <textElement verticalAlignment="Middle">
-                    <font size="11" isBold="true" fontName="SansSerif"/>
-                </textElement>
-                <text><![CDATA[Session ID]]></text>
-            </staticText>
-            <textField>
-                <reportElement x="230" y="221" width="300" height="36" forecolor="#212121"/>
-                <textElement verticalAlignment="Middle">
-                    <font size="11" fontName="SansSerif"/>
-                </textElement>
-                <textFieldExpression><![CDATA[$P{sessionId}]]></textFieldExpression>
-            </textField>
+			<!-- ── Row 2: Session ID ── -->
+			<rectangle>
+				<reportElement x="15" y="221" width="525" height="36"
+							   forecolor="#DEE2E6" backcolor="#F1F8FF"
+							   uuid="b27ea4d8-a17d-4b8b-ad26-17bb41cb3613"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="25" y="221" width="200" height="36"
+							   forecolor="#555555"
+							   uuid="34b6140c-dfe8-49e4-bebb-3cef09a6c2ab"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Session ID]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="230" y="221" width="300" height="36"
+							   forecolor="#212121"
+							   uuid="8996ca8f-eaaf-48fe-b398-db5d0883ebfb"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{sessionId}]]></textFieldExpression>
+			</textField>
 
-            <!-- ===== ROW 3: Payment Method ===== -->
-            <rectangle>
-                <reportElement x="15" y="257" width="525" height="36" backcolor="#FFFFFF" forecolor="#DEE2E6"/>
-                <graphicElement><pen lineWidth="0.5"/></graphicElement>
-            </rectangle>
-            <staticText>
-                <reportElement x="25" y="257" width="200" height="36" forecolor="#555555"/>
-                <textElement verticalAlignment="Middle">
-                    <font size="11" isBold="true" fontName="SansSerif"/>
-                </textElement>
-                <text><![CDATA[Payment Method]]></text>
-            </staticText>
-            <textField>
-                <reportElement x="230" y="257" width="300" height="36" forecolor="#212121"/>
-                <textElement verticalAlignment="Middle">
-                    <font size="11" fontName="SansSerif"/>
-                </textElement>
-                <textFieldExpression><![CDATA[$P{paymentMethod}]]></textFieldExpression>
-            </textField>
+			<!-- ── Row 3: Payment Method ── -->
+			<rectangle>
+				<reportElement x="15" y="257" width="525" height="36"
+							   forecolor="#DEE2E6" backcolor="#FFFFFF"
+							   uuid="08ce67ed-9f90-44c5-b65a-f6bdb79e6486"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="25" y="257" width="200" height="36"
+							   forecolor="#555555"
+							   uuid="6407cd80-dee7-430f-8cee-cefbd06d38ef"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Payment Method]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="230" y="257" width="300" height="36"
+							   forecolor="#212121"
+							   uuid="94c62128-ebcc-423b-8178-62e73b77ed30"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{paymentMethod}]]></textFieldExpression>
+			</textField>
 
-            <!-- ===== ROW 4: Payment Date ===== -->
-            <rectangle>
-                <reportElement x="15" y="293" width="525" height="36" backcolor="#F1F8FF" forecolor="#DEE2E6"/>
-                <graphicElement><pen lineWidth="0.5"/></graphicElement>
-            </rectangle>
-            <staticText>
-                <reportElement x="25" y="293" width="200" height="36" forecolor="#555555"/>
-                <textElement verticalAlignment="Middle">
-                    <font size="11" isBold="true" fontName="SansSerif"/>
-                </textElement>
-                <text><![CDATA[Payment Date]]></text>
-            </staticText>
-            <textField>
-                <reportElement x="230" y="293" width="300" height="36" forecolor="#212121"/>
-                <textElement verticalAlignment="Middle">
-                    <font size="11" fontName="SansSerif"/>
-                </textElement>
-                <textFieldExpression><![CDATA[$P{paymentDate}]]></textFieldExpression>
-            </textField>
+			<!-- ── Row 4: Payment Date ── -->
+			<rectangle>
+				<reportElement x="15" y="293" width="525" height="36"
+							   forecolor="#DEE2E6" backcolor="#F1F8FF"
+							   uuid="b12507c2-d7a3-4832-8646-f5c8b52af06d"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="25" y="293" width="200" height="36"
+							   forecolor="#555555"
+							   uuid="63b64549-6112-4d00-ab4d-7f1792fd1df2"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Payment Date]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="230" y="293" width="300" height="36"
+							   forecolor="#212121"
+							   uuid="bb0cf9b6-d212-44ce-8dbf-a5211ebd1665"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{paymentDate}]]></textFieldExpression>
+			</textField>
 
-            <!-- ===== ROW 5: Status ===== -->
-            <rectangle>
-                <reportElement x="15" y="329" width="525" height="36" backcolor="#FFFFFF" forecolor="#DEE2E6"/>
-                <graphicElement><pen lineWidth="0.5"/></graphicElement>
-            </rectangle>
-            <staticText>
-                <reportElement x="25" y="329" width="200" height="36" forecolor="#555555"/>
-                <textElement verticalAlignment="Middle">
-                    <font size="11" isBold="true" fontName="SansSerif"/>
-                </textElement>
-                <text><![CDATA[Status]]></text>
-            </staticText>
-            <textField>
-                <reportElement x="230" y="329" width="300" height="36" forecolor="#27AE60"/>
-                <textElement verticalAlignment="Middle">
-                    <font size="11" isBold="true" fontName="SansSerif"/>
-                </textElement>
-                <textFieldExpression><![CDATA[$P{status}]]></textFieldExpression>
-            </textField>
+			<!-- ── Row 5: Status ── -->
+			<rectangle>
+				<reportElement x="15" y="329" width="525" height="36"
+							   forecolor="#DEE2E6" backcolor="#FFFFFF"
+							   uuid="93c3f10d-4fab-4e45-83c1-2509bfbb0b87"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="25" y="329" width="200" height="36"
+							   forecolor="#555555"
+							   uuid="87d6591b-615c-4e88-bc40-cb9e2872a5f4"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Status]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="230" y="329" width="300" height="36"
+							   forecolor="#27AE60"
+							   uuid="64cf6d12-43ea-4774-a439-7460d61cd7ba"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{status}]]></textFieldExpression>
+			</textField>
 
-            <!-- ===== AMOUNT BOX ===== -->
-            <rectangle>
-                <reportElement x="0" y="470" width="555" height="65" backcolor="#1A73E8" forecolor="#1A73E8"/>
-                <graphicElement><pen lineWidth="0.0"/></graphicElement>
-            </rectangle>
-            <staticText>
-                <reportElement x="15" y="470" width="250" height="65" forecolor="#FFFFFF"/>
-                <textElement verticalAlignment="Middle">
-                    <font size="14" isBold="true" fontName="SansSerif"/>
-                </textElement>
-                <text><![CDATA[Total Amount Paid]]></text>
-            </staticText>
-            <textField>
-                <reportElement x="265" y="470" width="275" height="65" forecolor="#FFFFFF"/>
-                <textElement textAlignment="Right" verticalAlignment="Middle">
-                    <font size="20" isBold="true" fontName="SansSerif"/>
-                </textElement>
-                <textFieldExpression><![CDATA["Rs. " + String.format("%.2f", $P{amount})]]></textFieldExpression>
-            </textField>
+			<!-- ── Total Amount bar ── -->
+			<rectangle>
+				<reportElement x="0" y="470" width="555" height="65"
+							   forecolor="#1A73E8" backcolor="#1A73E8"
+							   uuid="3d0fee78-e155-4b42-9d9c-0994ec517a93"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="15" y="470" width="250" height="65"
+							   forecolor="#FFFFFF"
+							   uuid="d75abdcb-d02b-496f-bb68-c654ce9c7da8"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Amount Paid]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="265" y="470" width="275" height="65"
+							   forecolor="#FFFFFF"
+							   uuid="2a1f5a44-8ad6-4bc4-8515-22d48b8fba69"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="20" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Rs. " + String.format("%.2f", $P{amount})]]></textFieldExpression>
+			</textField>
 
-            <!-- ===== FOOTER NOTE ===== -->
-            <staticText>
-                <reportElement x="0" y="550" width="555" height="20" forecolor="#888888"/>
-                <textElement textAlignment="Center">
-                    <font size="9" isItalic="true" fontName="SansSerif"/>
-                </textElement>
-                <text><![CDATA[Thank you for choosing City Care Hospital. Please keep this invoice for your records.]]></text>
-            </staticText>
+			<!-- Thank you note -->
+			<staticText>
+				<reportElement x="0" y="550" width="555" height="20"
+							   forecolor="#888888"
+							   uuid="532444df-3562-4750-87a1-fd4e851394c9"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Thank you. Please keep this invoice for your records.]]></text>
+			</staticText>
 
-            <line>
-                <reportElement x="0" y="575" width="555" height="1" forecolor="#1A73E8"/>
-                <graphicElement><pen lineWidth="1.0"/></graphicElement>
-            </line>
+			<!-- Footer separator -->
+			<line>
+				<reportElement x="0" y="575" width="555" height="1"
+							   forecolor="#1A73E8"
+							   uuid="9259da0b-6847-4fa4-9d1b-679409ecb65f"/>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</line>
 
-            <staticText>
-                <reportElement x="0" y="580" width="555" height="20" forecolor="#AAAAAA"/>
-                <textElement textAlignment="Center">
-                    <font size="8" fontName="SansSerif"/>
-                </textElement>
-                <text><![CDATA[City Care Hospital  |  No. 45, Hospital Road, Colombo 07, Sri Lanka  |  info@citycarehospital.lk]]></text>
-            </staticText>
+			<!-- Footer text -->
+			<staticText>
+				<reportElement x="0" y="580" width="555" height="20"
+							   forecolor="#AAAAAA"
+							   uuid="a73bb57d-2d27-471a-a0f7-8aa33129d7ba"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<text><![CDATA[MediCare Mental Therapy Center  |  No. 45, Hospital Road, Colombo 07, Sri Lanka  |  info@medicare.lk]]></text>
+			</staticText>
 
-        </band>
-    </title>
+		</band>
+	</title>
 
-    <detail>
-        <band height="0"/>
-    </detail>
+	<detail>
+		<band/>
+	</detail>
 
 </jasperReport>

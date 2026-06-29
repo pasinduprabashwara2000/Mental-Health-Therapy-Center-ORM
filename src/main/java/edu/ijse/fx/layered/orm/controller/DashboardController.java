@@ -106,7 +106,7 @@ public class DashboardController {
 
         if (colPerformance != null) {
             colPerformance.setCellValueFactory(data ->
-                    new ReadOnlyObjectWrapper<>(data.getValue().getPerformancePrecent() + "%"));
+                    new ReadOnlyObjectWrapper<>(data.getValue().getPerformancePercent() + "%"));
 
             colPerformance.setCellFactory(col -> new TableCell<>() {
                 @Override

@@ -14,6 +14,7 @@ public class AdminReportDTO {
     private int totalSessions;
     private int completedSessions;
     private int cancelledSessions;
-    private double performancePrecent;
+    private double performancePercent;
+
 
 }
