@@ -304,7 +304,7 @@
     -fx-background-color: white;
     -fx-border-color: transparent transparent #f1f5f9 transparent;
     -fx-border-width: 0 0 1 0;
-    -fx-cell-size: 44px;
+    -fx-cell-size: 32px;
 }
 
 .dashboard-table .table-row-cell:odd {
